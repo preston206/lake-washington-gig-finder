@@ -19,5 +19,10 @@
   "homepage": "https://github.com/preston206/Gig-Finder#readme",
   "dependencies": {
     "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.5.0"
   }
 }
