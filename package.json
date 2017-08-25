@@ -1,0 +1,23 @@
+{
+  "name": "gig-finder",
+  "version": "1.0.0",
+  "description": "Thinkful.com Back-End web dev final project with Node, Express, and MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "Start": "node server.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/preston206/Gig-Finder.git"
+  },
+  "author": "bpr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/preston206/Gig-Finder/issues"
+  },
+  "homepage": "https://github.com/preston206/Gig-Finder#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
