@@ -3,7 +3,7 @@ node_js: node
 deploy:
   provider: heroku
   api_key:
-    secure: m6x616Y4uu41pYEamIyT54PN4HI3pvz5PjvD66I7v8fT/7wPxu9EDqNLVlylCSwBKvaShT2MrcniV923GADp0AH+WGVPvWuCQ38a9DHnO1LruEBEfJr2LjDe2D5brF3ppXT19ujLE5FgqjpNmZAzqv1OyC+/ujQTaCusiPCuWWU17NyLlRyJjMaX8/vESJAMCUoZWv7ngW1X6iN1CaKPRnbukpovPX7xR/A3uexGm+xiTdKGRb2Y50/KK3T9h6XbLAbpuYnlOs6+oW1Y2PRXdbCZ5ie4QP4JFCpH4AEwpQZQQAg/Z0fX5/drtCAm1WgTQDQ4EaMmNzt/Kuxt/gHr3WU1DXWQTQZfPCghxoqJu6KYtAmxocZeiiW5mJB1P/gz1P/Rc5g0CYlB9pxUthZ4wAte933SyKZJnqqlP5O/BSwsbTsqf+Ap+M5Yyolap50F2qmZUEXHcqCWlG/E9CXSXh8ymTw4JNUa4IrOyESW99dkewkUtsvc1quQWUJnj9lWYCplpixXA9eoTeIT1XkKn+dKX117Ok/iBh2Ma7gW4e7CamBaXbWra1W70JtUFgynVs1jFTKYcDyyeFrPCvMx2TiqkRcc/o8sfWUOTe7SO4pTQp4D1MOHXaUbhxsck8Duudje7YijlOh3J4+aUEfaiVMeqRGgK0Xv4PVm53NnVx0=
+    secure: 4e0235eb-28b7-4735-96a5-dd0874fa452f
   app: infinite-garden-26914
   on:
     repo: preston206/Gig-Finder
