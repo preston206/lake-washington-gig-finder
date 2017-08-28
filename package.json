@@ -4,7 +4,7 @@
   "description": "Thinkful.com Back-End web dev final project with Node, Express, and MongoDB",
   "main": "server.js",
   "scripts": {
-    "Start": "node server.js",
+    "Start": "nodemon server.js",
     "test": "mocha"
   },
   "repository": {
@@ -23,6 +23,7 @@
   "devDependencies": {
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
-    "mocha": "^3.5.0"
+    "mocha": "^3.5.0",
+    "nodemon": "^1.11.0"
   }
 }
