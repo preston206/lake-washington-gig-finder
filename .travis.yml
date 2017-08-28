@@ -7,3 +7,7 @@ deploy:
   app: infinite-garden-26914
   on:
     repo: preston206/Gig-Finder
+notifications:
+  email:
+    on_success: never
+    on_failure: never
