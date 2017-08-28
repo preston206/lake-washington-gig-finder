@@ -6,7 +6,7 @@ deploy:
     secure: 4e0235eb-28b7-4735-96a5-dd0874fa452f
   app: infinite-garden-26914
   on:
-    repo: preston206/Gig-Finder
+    repo: preston206/Lake-Washington-Gig-Finder
 notifications:
   email:
     on_success: never
