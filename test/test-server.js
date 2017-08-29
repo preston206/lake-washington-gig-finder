@@ -26,9 +26,18 @@ describe('server', function () {
             });
     });
 
-    it('should test for 200s and html when getting job submit page', function () {
+    it('should test for 200s and html when getting job post page', function () {
         return chai.request(app)
-            .get('/submit')
+            .get('/post')
+            .then(function (response) {
+                response.should.have.status(200);
+                response.should.be.html;
+            });
+    });
+
+    it('should test for 200s and html when getting job edit page', function () {
+        return chai.request(app)
+            .get('/edit')
             .then(function (response) {
                 response.should.have.status(200);
                 response.should.be.html;
