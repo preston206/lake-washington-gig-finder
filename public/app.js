@@ -6,39 +6,39 @@ const mockJobSearchData = {
             "postDate": "8/22/17",
             "company": "Tech World",
             "title": "Front-End Engineer",
-            "description": "Ipsum incididunt enim irure Lorem eiusmod aliquip proident" +
-            "incididunt aute laboris reprehenderit laborum qui. Laborum pariatur velit enim ut ut" +
-            "in aliquip. Quis anim tempor dolore fugiat velit mollit magna labore."
+            "technologies": "HTML, CSS, jQuery"
         },
         {
             "id": "002",
             "postDate": "8/23/17",
-            "company": "Cybercoders",
+            "company": "Cyber-JS",
             "title": "Node Engineer",
-            "description": "Incididunt enim irure Lorem eiusmod aliquip proident" +
-            "incididunt aute laboris reprehenderit Ipsum laborum qui. Laborum pariatur velit enim ut ut" +
-            "in aliquip. Quis anim tempor dolore fugiat velit mollit magna labore."
+            "technologies": "Node, Express, Mongoose"
         },
         {
             "id": "003",
             "postDate": "8/24/17",
             "company": "Code Lab",
             "title": "UX Designer",
-            "description": "Enim irure Lorem eiusmod aliquip proident Ipsum incididunt" +
-            "incididunt aute laboris reprehenderit laborum qui. Laborum pariatur velit enim ut ut" +
-            "in aliquip. Quis anim tempor dolore fugiat velit mollit magna labore."
+            "technologies": "HTML, CSS, Bootstrap"
         },
         {
             "id": "004",
             "postDate": "8/25/17",
             "company": "Web Leet",
             "title": "MongoDB Admin",
-            "description": "Lorem eiusmod aliquip proident Ipsum incididunt enim irure" +
-            "incididunt aute laboris reprehenderit laborum qui. Laborum pariatur velit enim ut ut" +
-            "in aliquip. Quis anim tempor dolore fugiat velit mollit magna labore."
+            "technologies": "JavaScript, Express, Mongoose, MongoDB"
         }
     ]
 };
+
+// "id": "004",
+// "postDate": "8/25/17",
+// "company": "Web Leet",
+// "title": "MongoDB Admin",
+// "description": "Lorem eiusmod aliquip proident Ipsum incididunt enim irure" +
+// "incididunt aute laboris reprehenderit laborum qui. Laborum pariatur velit enim ut ut" +
+// "in aliquip. Quis anim tempor dolore fugiat velit mollit magna labore."
 
 function getJobs(callbackFn) {
     setTimeout(function () { callbackFn(mockJobSearchData) }, 200);
@@ -49,11 +49,11 @@ function displayJobs(data) {
 
     data.jobs.map(function (job) {
 
-        let html = $(`<p>${job.id}</p>
-        <p>${job.postDate}</p>
-        <p>${job.company}</p>
-        <p>${job.title}</p>
-        <p>${job.description}</p>`);
+        let html = $(`<p><b>${job.id}</b><br />
+        ${job.postDate}<br />
+        ${job.company}<br />
+        ${job.title}<br />
+        ${job.technologies}</p>`);
 
         $('#job-listings').append(html);
 
