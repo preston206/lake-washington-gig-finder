@@ -22,17 +22,19 @@ const jobs = {
         console.log("retrieving jobs...");
         return Object.keys(this.items).map(key => this.items[key]);
     },
-    update: function (itemObject) {
-        console.log(`updating job id ${itemObject.id}...`);
-        const { id } = itemObject;
+    update: function (updatedJob) {
+        console.log(`updating job ID ${updatedJob.id}...`);
+        const { id } = updatedJob;
         if (!(id in this.items)) {
-            throw StorageException(`Can't update item, because ${id} doesn't exist.`);
+            throw StorageException(
+                `Can't update item, because ${id} doesn't exist.`);
         };
-        this.items[itemObject.id] = itemObject;
-        return itemObject;
+        this.items[updatedJob.id] = updatedJob;
+        // console.log(updatedJob);
+        return updatedJob;
     },
     delete: function (id) {
-        console.log(`Deleting job id ${id}...`);
+        console.log(`Deleting job ID ${id}...`);
         delete this.items[id];
     }
 };

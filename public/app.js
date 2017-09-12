@@ -1,3 +1,6 @@
+
+// const { app } = require('../server');
+
 // creating mock job search data
 const mockJobSearchData = {
     "jobs": [
@@ -41,7 +44,9 @@ const mockJobSearchData = {
 // "in aliquip. Quis anim tempor dolore fugiat velit mollit magna labore."
 
 function getJobs(callbackFn) {
-    setTimeout(function () { callbackFn(mockJobSearchData) }, 200);
+    // setTimeout(function () { callbackFn(mockJobSearchData) }, 200);
+    callbackFn(mockJobSearchData);
+    // callbackFn(app.get('/jobs'));
 };
 
 // this function stays the same when we connect to a real API later
@@ -49,8 +54,13 @@ function displayJobs(data) {
 
     data.jobs.map(function (job) {
 
+        // let html = $(`<p><b>${job.id}</b><br />
+        // ${job.postDate}<br />
+        // ${job.company}<br />
+        // ${job.title}<br />
+        // ${job.technologies}</p>`);
+
         let html = $(`<p><b>${job.id}</b><br />
-        ${job.postDate}<br />
         ${job.company}<br />
         ${job.title}<br />
         ${job.technologies}</p>`);
