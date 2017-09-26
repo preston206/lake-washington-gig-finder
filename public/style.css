@@ -4,37 +4,8 @@ body {
     background-color: #777;
 }
 
-form {
-    width: 400px;
-}
-
-input, textarea, select {
-    width: 100%;
-}
-
-textarea {
-    height: 200px;
-}
-
-/* header {
-    width: 100%;
-    background-color: deepskyblue;
-}
-
-main {
-    border: 1px solid gray;
-    height: 775px;
-} */
-
 .btn-outline-dark:hover {
     background-color: #428BCA;
-}
-
-
-/* index.html */
-
-fieldset {
-    width: 250px;
 }
 
 .demoLogins {
@@ -95,6 +66,5 @@ fieldset {
 /* edit.html */
 
 #edit-delete-checkbox {
-    width: 35px;
-    margin-right: 75px;
+    margin-right: 235px;
 }

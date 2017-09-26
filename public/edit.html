@@ -44,7 +44,7 @@
 
     <main>
 
-        <div class="container-fluid">
+        <div class="container float-left">
             <!-- job edit form -->
             <form id="form-job-edit" method="POST" action="/jobs/post">
                 <div class="form-group">
@@ -104,15 +104,16 @@
 
                 <div class="form-group">
                     <!-- fill button to grab job data by ID -->
-                    <button type="button" id="btn-fill-edit-page">fill</button>
+                    <button type="button" class="float-left" id="btn-fill-edit-page">fill</button>
 
                     <!-- submit job edit to PUT endpoint -->
-                    <button type="submit" id="btn-update-job-post">submit</button>
+                    <button type="submit" class="float-right" id="btn-update-job-post">submit</button>
                 </div>
+                <br /><br /><br /><br />
                 <div class="form-group">
                     <p>to delete, check the box and click the button</p>
                     <input type="checkbox" id="edit-delete-checkbox" />
-                    <button type="button" id="btn-delete-job-post">delete</button>
+                    <button type="button" id="btn-delete-job-post" disabled>delete</button>
                 </div>
         </div>
         </form>

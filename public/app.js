@@ -165,6 +165,16 @@ $(function () {
         getOneJob(populateEditPageFields);
     });
 
+    // edit.html - disable\enable delete button
+    $('#edit-delete-checkbox').on('change', function () {
+        if ($('#edit-delete-checkbox').prop("checked")) {
+            $('#btn-delete-job-post').attr("disabled", false);
+        }
+        else {
+            $('#btn-delete-job-post').attr("disabled", true);
+        }
+    });
+
     // delete job task
     $('#btn-delete-job-post').click(() => {
         deleteOneJob();
