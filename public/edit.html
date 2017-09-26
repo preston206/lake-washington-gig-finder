@@ -109,10 +109,13 @@
                     <!-- submit job edit to PUT endpoint -->
                     <button type="submit" class="float-right" id="btn-update-job-post">submit</button>
                 </div>
-                <br /><br /><br /><br />
-                <div class="form-group">
-                    <p>to delete, check the box and click the button</p>
-                    <input type="checkbox" id="edit-delete-checkbox" />
+                <br /><br /><br />
+
+                <div class="form-check">
+                    <small id="editDeleteCheckboxHelp" class="form-text">To delete, check the box and click the button.</small>
+                    <label class="form-check-label" for="#">
+                    <input class="form-check-input" type="checkbox" id="checkbox-edit-delete" value="option1" aria-describedby="editDeleteCheckboxHelp" />
+                    </label>
                     <button type="button" id="btn-delete-job-post" disabled>delete</button>
                 </div>
         </div>

@@ -166,8 +166,8 @@ $(function () {
     });
 
     // edit.html - disable\enable delete button
-    $('#edit-delete-checkbox').on('change', function () {
-        if ($('#edit-delete-checkbox').prop("checked")) {
+    $('#checkbox-edit-delete').on('change', function () {
+        if ($('#checkbox-edit-delete').prop("checked")) {
             $('#btn-delete-job-post').attr("disabled", false);
         }
         else {

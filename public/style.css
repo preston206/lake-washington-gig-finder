@@ -20,7 +20,7 @@ body {
     margin-right: 50px;
     border: 1px solid lightblue;
     width: 400px;
-    height: 775px;
+    height: 800px;
 }
 
 #job-listings {
@@ -34,14 +34,15 @@ body {
 }
 
 
-/* #btn-refresh-jobs {
-    margin-left: 150px;
-} */
+#btn-refresh-jobs {
+    /* margin-left: 5px; */
+    margin-top: 5px;
+}
 
 #job-description {
-    width: 700px;
+    /* width: 700px;
     height: 90%;
-    border: 1px solid red;
+    border: 1px solid red; */
     display: inline-block;
 }
 
@@ -65,6 +66,6 @@ body {
 
 /* edit.html */
 
-#edit-delete-checkbox {
+#checkbox-edit-delete {
     margin-right: 235px;
 }
