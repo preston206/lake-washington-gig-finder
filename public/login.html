@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gig Finder | Find</title>
+    <title>Gig Finder | Login</title>
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
         crossorigin="anonymous">
@@ -44,35 +44,48 @@
     </header>
 
     <main>
+        <!-- <form id="login-form" action="/auth/login" method="POST">
+            <fieldset>
+                <legend>Login</legend>
+                <label for="username">Username</label><br />
+                <input type="text" id="username" name="username" /><br /><br />
+                <label for="password">Password</label><br />
+                <input type="password" id="password" name="password" /><br /><br />
+                <button type="submit">Submit</button>
+            </fieldset>
 
-        <div class="job-listings-wrap">
-            <button type="button" id="btn-refresh-jobs">refresh jobs</button>
+            <p class="demoLogins">
+                <u>job seeker demo login</u><br /> u: peter<br /> p: spiderman<br /><br />
 
-            <!-- the post button should enabled only if authorized -->
-            <button type="button" id="btn-goToPost">
-                Post a job
-            </button>
+                <u>company demo login</u><br /> u: initech<br /> p: redstapler<br />
+            </p>
+        </form> -->
 
-            <div id="job-listings">
-            </div>
+        <div class="container-fluid">
+            <!-- job edit form -->
+            <form id="form-login" method="POST" action="/jobs/post">
+                <div class="form-group">
+                    <fieldset>
+                        <legend>Login</legend>
+                        <label for="login-username">Username</label>
+                        <input type="email" class="form-control" id="login-username" aria-describedby="loginUsernameHelp" name="username" placeholder="email@domain.com"
+                            required/>
+                        <small id="loginUsernameHelp" class="form-text text-muted">Your username is the email address that you registered with.</small>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="text" class="form-control" id="login-password" name="password" required/>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+                </fieldset>
         </div>
-
-        <br />
-
-        <div id="job-description">
-            <p>job description placeholder</p>
-        </div>
-
+        </form>
     </main>
 
 
     <script src="/app.js"></script>
-
-    <script>
-        $(function () {
-            getAllJobs(displayAllJobs);
-        });
-    </script>
 
 </body>
 

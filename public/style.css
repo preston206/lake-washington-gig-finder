@@ -1,0 +1,100 @@
+/* global */
+
+body {
+    background-color: #777;
+}
+
+form {
+    width: 400px;
+}
+
+input, textarea, select {
+    width: 100%;
+}
+
+textarea {
+    height: 200px;
+}
+
+/* header {
+    width: 100%;
+    background-color: deepskyblue;
+}
+
+main {
+    border: 1px solid gray;
+    height: 775px;
+} */
+
+.btn-outline-dark:hover {
+    background-color: #428BCA;
+}
+
+
+/* index.html */
+
+fieldset {
+    width: 250px;
+}
+
+.demoLogins {
+    font-size: 13px;
+}
+
+
+/* find.html */
+
+.job-listings-wrap {
+    float: left;
+    margin-right: 50px;
+    border: 1px solid lightblue;
+    width: 400px;
+    height: 775px;
+}
+
+#job-listings {
+    width: 400px;
+    height: 750px;
+    border-right: 7px solid lightgray;
+    border-top: 1px solid gray;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: auto;
+}
+
+
+/* #btn-refresh-jobs {
+    margin-left: 150px;
+} */
+
+#job-description {
+    width: 700px;
+    height: 90%;
+    border: 1px solid red;
+    display: inline-block;
+}
+
+.job-post {
+    background-color: lavender;
+}
+
+.job-post:hover {
+    background-color: orange;
+    cursor: pointer;
+}
+
+.job-post-date {
+    font-weight: bold;
+}
+
+.job-post-id {
+    color: #ccc;
+}
+
+
+/* edit.html */
+
+#edit-delete-checkbox {
+    width: 35px;
+    margin-right: 75px;
+}

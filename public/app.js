@@ -1,82 +1,231 @@
+// get ONE job by ID
+function getOneJob(callbackFn) {
 
-// const { app } = require('../server');
+    let id = $('#edit-job-id').val();
+    let url = "http://localhost:8080/jobs/getone/" + id;
 
-// creating mock job search data
-const mockJobSearchData = {
-    "jobs": [
-        {
-            "id": "001",
-            "postDate": "8/22/17",
-            "company": "Tech World",
-            "title": "Front-End Engineer",
-            "technologies": "HTML, CSS, jQuery"
-        },
-        {
-            "id": "002",
-            "postDate": "8/23/17",
-            "company": "Cyber-JS",
-            "title": "Node Engineer",
-            "technologies": "Node, Express, Mongoose"
-        },
-        {
-            "id": "003",
-            "postDate": "8/24/17",
-            "company": "Code Lab",
-            "title": "UX Designer",
-            "technologies": "HTML, CSS, Bootstrap"
-        },
-        {
-            "id": "004",
-            "postDate": "8/25/17",
-            "company": "Web Leet",
-            "title": "MongoDB Admin",
-            "technologies": "JavaScript, Express, Mongoose, MongoDB"
+    $.ajax({
+        url: url,
+        id: id,
+        success: callbackFn
+    });
+};
+
+// get ALL job posts
+function getAllJobs(callbackFn) {
+    let url = "http://localhost:8080/jobs/"
+
+    // local storage test
+    // let localStorage;
+    // try {
+    //     localStorage = window.localStorage;
+    //     console.log("localStorage allowed.");
+    // }
+    // catch (error) {
+    //     console.log("localStorage denied.");
+    // };
+
+    $.ajax({
+        url: url,
+        success: callbackFn
+    });
+};
+
+// delete ONE job by ID
+function deleteOneJob() {
+    let id = $('#edit-job-id').val();
+    let url = "http://localhost:8080/jobs/delete/" + id;
+
+    $.ajax({
+        url: url,
+        id: id,
+        method: "DELETE",
+        success: function () {
+            console.info("job has been deleted.");
         }
-    ]
+    });
 };
 
-// "id": "004",
-// "postDate": "8/25/17",
-// "company": "Web Leet",
-// "title": "MongoDB Admin",
-// "description": "Lorem eiusmod aliquip proident Ipsum incididunt enim irure" +
-// "incididunt aute laboris reprehenderit laborum qui. Laborum pariatur velit enim ut ut" +
-// "in aliquip. Quis anim tempor dolore fugiat velit mollit magna labore."
-
-function getJobs(callbackFn) {
-    // setTimeout(function () { callbackFn(mockJobSearchData) }, 200);
-    callbackFn(mockJobSearchData);
-    // callbackFn(app.get('/jobs'));
+// EDIT PAGE
+// populate the edit page with info from ONE job post
+function populateEditPageFields(data) {
+    $('#edit-company').val(data.company);
+    $('#edit-title').val(data.title);
+    $('#edit-salary').val(data.salary);
+    $('#edit-region').val(data.region);
+    $('#edit-city').val(data.city);
+    $('#edit-email').val(data.email);
+    $('#edit-technologies').val(data.technologies);
+    $('#edit-description').val(data.description);
 };
 
-// this function stays the same when we connect to a real API later
-function displayJobs(data) {
+// FIND PAGE
+// display ALL job posts on find.html
+function displayAllJobs(data) {
 
-    data.jobs.map(function (job) {
+    let results = [];
 
-        // let html = $(`<p><b>${job.id}</b><br />
-        // ${job.postDate}<br />
-        // ${job.company}<br />
-        // ${job.title}<br />
-        // ${job.technologies}</p>`);
+    let jobCheck = $('#job-listings').html();
 
-        let html = $(`<p><b>${job.id}</b><br />
+    if (jobCheck) {
+        $('#job-listings').empty();
+        $('#job-description').empty();
+    };
+
+    data.map(function (job) {
+
+        let date = new Date(job.postDate);
+        let month = date.getMonth();
+        let day = date.getDate();
+
+        if (month) {
+            month++
+            switch (month) {
+                case 1:
+                    month = "January";
+                    break;
+                case 2:
+                    month = "February";
+                    break;
+                case 3:
+                    month = "March";
+                    break;
+                case 4:
+                    month = "April";
+                    break;
+                case 5:
+                    month = "May";
+                    break;
+                case 6:
+                    month = "June";
+                    break;
+                case 7:
+                    month = "July";
+                    break;
+                case 8:
+                    month = "August";
+                    break;
+                case 9:
+                    month = "September";
+                    break;
+                case 10:
+                    month = "October";
+                    break;
+                case 11:
+                    month = "November";
+                    break;
+                case 12:
+                    month = "December";
+                    break;
+            };
+        };
+
+        let jobPostHtml = $(`<div class="job-post-wrap">
+        <p class="job-post">
+        <span class="job-post-date">${month} ${day}</span><br />
+        ${job.city}<br />
+        ${job.salary}<br />
         ${job.company}<br />
         ${job.title}<br />
-        ${job.technologies}</p>`);
+        ${job.technologies}<br />
+        <span class="job-post-id">${job.id}</span></p></div>`);
 
-        $('#job-listings').append(html);
+        let jobDescriptionHtml = $(`<p class="job-description">
+        <span class="job-description-date">${month} ${day}</span><br />
+        ${job.city}<br />
+        ${job.salary}<br />
+        ${job.company}<br />
+        ${job.title}<br />
+        ${job.technologies}<br />
+        <span class="job-description-id">${job.id}</span></p>`);
 
+        $(jobPostHtml).each(function (event) {
+            $(this).on('click', function () {
+                // console.log("this is a test!");
+                $('#job-description').html(jobDescriptionHtml);
+            });
+        });
+
+        results.push(jobPostHtml);
     });
 
+    $('#job-listings').html(results);
 };
 
-// this function stays the same when we connect to a real API later
-function getAndDisplayJobListings() {
-    getJobs(displayJobs);
-};
 
+// DOC READY FUNCTIONS
 $(function () {
-    getAndDisplayJobListings();
+    // find.html - refresh job list
+    $('#btn-refresh-jobs').click(() => {
+        getAllJobs(displayAllJobs);
+    });
+
+    // edit.html - populate fields with job data
+    $('#btn-fill-edit-page').click(() => {
+        getOneJob(populateEditPageFields);
+    });
+
+    // delete job task
+    $('#btn-delete-job-post').click(() => {
+        deleteOneJob();
+    });
+
+    // index.html - login form handler
+    $('#form-login').submit(function (event) {
+        event.preventDefault();
+
+        const formData = $(event.target);
+        const username = formData.find('[name=username]').val().trim();
+        const password = formData.find('[name=password]').val().trim();
+        const base64encoded = window.btoa(username + ':' + password);
+        console.log(username, password);
+        console.log(base64encoded);
+
+        $.ajax({
+            type: 'POST',
+            url: '/auth/login',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + base64encoded);
+            },
+            error: function (error) {
+                alert("a login error occurred.");
+                // console.log(error);
+            },
+            success: function (jqXHR) {
+                localStorage.setItem('authToken', jqXHR.authToken);
+                window.location.href = "find.html";
+                // console.log("logged in.");
+                // console.log(jqXHR);
+                // let authToken = jqXHR.authToken;
+                // console.log("authToken: ", authToken);
+                // console.log("from local storage: ", localStorage.getItem('authToken'));
+            }
+        })
+    });
+
+    // job post authorization
+    $('#btn-goToPost').click(function (event) {
+        event.preventDefault();
+
+        let postAuthToken = localStorage.getItem('authToken');
+        console.log(postAuthToken);
+
+        $.ajax({
+            type: 'GET',
+            url: '/auth/post',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + postAuthToken);
+            },
+            error: function (error) {
+                console.log("error getting post.html");
+                console.log(error);
+            },
+            success: function (jqXHR) {
+                // localStorage.setItem('authToken', jqXHR.authToken);
+                window.location.href = "post.html";
+            }
+        })
+    });
+
     console.log("document is ready");
 });

@@ -5,53 +5,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Gig Finder | Edit</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
     <header>
-        <h1>Gig Finder</h1>
-        <p>edit or delete your job listing</p>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Gig Finder</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+                aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Find</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Edit</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <main>
 
-        <form action="">
-            <label for="">ID</label><br />
-            <input type="text" placeholder="0055" disabled /><br /><br />
+        <div class="container-fluid">
+            <!-- job edit form -->
+            <form id="form-job-edit" method="POST" action="/jobs/post">
+                <div class="form-group">
+                    <label for="edit-company">Company</label>
+                    <input type="text" class="form-control" id="edit-company" name="company" required/>
+                </div>
+                <div class="form-group">
+                    <label for="edit-title">Title</label>
+                    <input type="text" class="form-control" id="edit-title" name="title" required/>
+                </div>
+                <div class="form-group">
+                    <label for="edit-salary">Salary</label>
+                    <select class="form-control" id="edit-salary" name="salary" required>
+                        <option></option>
+                        <option>less than 30K</option>
+                        <option>30K - 39K</option>
+                        <option>40K - 49K</option>
+                        <option>50K - 59K</option>
+                        <option>60K - 69K</option>
+                        <option>70K - 79K</option>
+                        <option>80K - 89K</option>
+                        <option>90K - 99K</option>
+                        <option>100K - 109K</option>
+                        <option>110K - 119K</option>
+                        <option>120K - 129K</option>
+                        <option>130K - 140K</option>
+                        <option>more than 140K</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-region">Region</label>
+                    <select class="form-control" id="edit-region" name="region" required>
+                        <option></option>
+                        <option>NW</option>
+                        <option>NE</option>
+                        <option>SE</option>
+                        <option>SW</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-city">City</label>
+                    <input type="text" class="form-control" id="edit-city" name="city" required/>
+                </div>
+                <div class="form-group">
+                    <label for="edit-email">Email</label>
+                    <input type="email" class="form-control" id="edit-email" name="email" required/>
+                </div>
+                <div class="form-group">
+                    <label for="edit-technologies">Technologies</label>
+                    <input type="text" class="form-control" id="edit-technologies" name="technologies" placeholder="e.g. HTML, CSS, React" required/>
+                </div>
+                <div class="form-group">
+                    <label for="edit-description">Description</label>
+                    <textarea class="form-control" name="description" id="edit-description" required></textarea>
+                </div>
 
-            <label for="">Company</label><br />
-            <input type="text" /><br /><br />
 
-            <label for="">Title</label><br />
-            <input type="text" /><br /><br />
+                <div class="form-group">
+                    <!-- fill button to grab job data by ID -->
+                    <button type="button" id="btn-fill-edit-page">fill</button>
 
-            <label for="">Salary</label><br />
-            <select name="" id="">
-                <option value="">less than 30K</option>
-                <option value="">30K - 40K</option>
-                <option value="">41K - 50K</option>
-                <option value="">51K - 60K</option>
-                <option value="">61K - 70K</option>
-                <option value="">71K - 80K</option>
-                <option value="">81K - 90K</option>
-                <option value="">91K - 100K</option>
-                <option value="">more than 100K</option>
-            </select><br /><br />
-
-            <label for="">Technologies</label><br />
-            <input type="text" placeholder="e.g. HTML, CSS, React" /><br /><br />
-
-            <label for="">Description</label><br />
-            <textarea name="" id="" cols="30" rows="10"></textarea><br /><br />
-
-            <button>submit</button><br /><br />
-
-            <p>to delete, check the box and click the button</p>
-            <input type="checkbox" name="" id="" /> <button>delete</button>
+                    <!-- submit job edit to PUT endpoint -->
+                    <button type="submit" id="btn-update-job-post">submit</button>
+                </div>
+                <div class="form-group">
+                    <p>to delete, check the box and click the button</p>
+                    <input type="checkbox" id="edit-delete-checkbox" />
+                    <button type="button" id="btn-delete-job-post">delete</button>
+                </div>
+        </div>
         </form>
 
     </main>
+
+
+    <script src="/app.js"></script>
+
 </body>
 
 </html>
