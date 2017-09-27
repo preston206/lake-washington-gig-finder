@@ -31,6 +31,7 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
         "technologies",
         "description"
     ];
+
     for (let i = 0; i < requiredFields.length; i++) {
         let field = requiredFields[i];
         if (!(field in req.body)) {
@@ -46,70 +47,65 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
     // console.log(req.body.email);
     // console.log(job);
 
-    technologies = technologies.split(",");
+    // if (typeof technologies == "string") {
+    //     technologies = technologies.split(",");
+    // };
 
-    // TODO: try to refactor the job edit page to hit the PUT endpoint
-    // e.g. using AJAX method: 'PUT'
-    if (req.body.id) {
-        let id = req.body.id;
-        let idTrimmed = id.trim();
+    // technologies.map(function (technology, index) {
+    //     technologies[index] = technology.trim();
+    // });
 
-        const jobFieldsToUpdate = {};
-        const updateableJobFields = [
-            'company',
-            'title',
-            'salary',
-            'region',
-            'city',
-            'email',
-            'technologies',
-            'description'
-        ];
-
-        updateableJobFields.forEach(jobField => {
-            if (jobField in req.body) {
-                jobFieldsToUpdate[jobField] = req.body[jobField];
-            };
+    return Job
+        .create({
+            company,
+            title,
+            salary,
+            region,
+            city,
+            email,
+            technologies,
+            description
+        })
+        .then(job => {
+            return res.status(201).json({
+                message: "job has been posted.",
+                data: job.apiRepr()
+            });
+        })
+        .catch(error => {
+            return res.status(500).json({
+                message: "Internal Server Error."
+            });
         });
-
-        return Job
-            .findByIdAndUpdate(idTrimmed, { $set: jobFieldsToUpdate }, { new: true })
-            .exec()
-            .then(job => {
-                return res.status(201).json({
-                    message: "job has been updated.",
-                    data: job.apiRepr()
-                });
-            })
-            .catch(error => {
-                return res.status(500).json({
-                    message: "Internal Server Error."
-                });
-            });
-    }
-    else {
-        return Job
-            .create({
-                company,
-                title,
-                salary,
-                region,
-                city,
-                email,
-                technologies,
-                description
-            })
-            .then(job => {
-                res.status(201);
-                res.render('test');
-            })
-            .catch(error => {
-                return res.status(500).json({
-                    message: "Internal Server Error."
-                });
-            });
-    }
 });
+
+
+
+
+// copy of job post code
+// return Job
+// .create({
+//     company,
+//     title,
+//     salary,
+//     region,
+//     city,
+//     email,
+//     technologies,
+//     description
+// })
+// .then(job => {
+//     res.status(201);
+//     res.render('test');
+// })
+// .catch(error => {
+//     return res.status(500).json({
+//         message: "Internal Server Error."
+//     });
+// });
+
+
+
 
 // (Read) get ALL jobs
 router.get('/', (req, res) => {
@@ -132,7 +128,12 @@ router.get('/getone/:id', (req, res) => {
 });
 
 // (Update) put job
-router.put('/update/:id', jsonParser, (request, response) => {
+router.put('/update/:id', jsonParser, urlencodedParser, (request, response) => {
+    // let technologies = request.body.technologies;
+
+    // technologies.map(function (technology, index) {
+    //     technologies[index] = technology.trim();
+    // });
 
     let requiredFields = [
         'id',
@@ -149,7 +150,7 @@ router.put('/update/:id', jsonParser, (request, response) => {
     for (let i = 0; i < requiredFields.length; i++) {
         let field = requiredFields[i];
         if (!(field in request.body)) {
-            let message = `${field} missing from request body`;
+            let message = `${field} is missing from the request body`;
             console.error(message);
             response.status(400).send(message);
         };

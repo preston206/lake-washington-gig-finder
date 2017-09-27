@@ -46,18 +46,23 @@
 
         <div class="container float-left">
             <!-- job edit form -->
-            <form id="form-job-edit" method="POST" action="/jobs/post">
+            <form id="form-job-edit" method="#" action="#">
+                <div class="form-group">
+                    <label for="edit-job-id">Job ID</label>
+                    <small id="editFillJobIDHelp" class="form-text">Fill in the job ID and click the fill button.</small>
+                    <input type="text" class="form-control" id="edit-job-id" name="id" aria-describedby="editFillJobIDHelp" required />
+                </div>
                 <div class="form-group">
                     <label for="edit-company">Company</label>
-                    <input type="text" class="form-control" id="edit-company" name="company" required/>
+                    <input type="text" class="form-control disabled-input" id="edit-company" name="company" disabled required />
                 </div>
                 <div class="form-group">
                     <label for="edit-title">Title</label>
-                    <input type="text" class="form-control" id="edit-title" name="title" required/>
+                    <input type="text" class="form-control disabled-input" id="edit-title" name="title" disabled required />
                 </div>
                 <div class="form-group">
                     <label for="edit-salary">Salary</label>
-                    <select class="form-control" id="edit-salary" name="salary" required>
+                    <select class="form-control disabled-input" id="edit-salary" name="salary" disabled required>
                         <option></option>
                         <option>less than 30K</option>
                         <option>30K - 39K</option>
@@ -76,7 +81,7 @@
                 </div>
                 <div class="form-group">
                     <label for="edit-region">Region</label>
-                    <select class="form-control" id="edit-region" name="region" required>
+                    <select class="form-control disabled-input" id="edit-region" name="region" disabled required>
                         <option></option>
                         <option>NW</option>
                         <option>NE</option>
@@ -86,28 +91,30 @@
                 </div>
                 <div class="form-group">
                     <label for="edit-city">City</label>
-                    <input type="text" class="form-control" id="edit-city" name="city" required/>
+                    <input type="text" class="form-control disabled-input" id="edit-city" name="city" disabled required />
                 </div>
                 <div class="form-group">
                     <label for="edit-email">Email</label>
-                    <input type="email" class="form-control" id="edit-email" name="email" required/>
+                    <input type="email" class="form-control disabled-input" id="edit-email" name="email" disabled required />
                 </div>
                 <div class="form-group">
                     <label for="edit-technologies">Technologies</label>
-                    <input type="text" class="form-control" id="edit-technologies" name="technologies" placeholder="e.g. HTML, CSS, React" required/>
+                    <input type="text" class="form-control disabled-input" id="edit-technologies" name="technologies" placeholder="e.g. HTML, CSS, React"
+                        disabled required />
                 </div>
                 <div class="form-group">
                     <label for="edit-description">Description</label>
-                    <textarea class="form-control" name="description" id="edit-description" required></textarea>
+                    <textarea class="form-control disabled-input" name="description" id="edit-description" disabled required></textarea>
                 </div>
-
-
                 <div class="form-group">
                     <!-- fill button to grab job data by ID -->
                     <button type="button" class="float-left" id="btn-fill-edit-page">fill</button>
 
+                    <!-- refresh the page to edit another job post -->
+                    <button type="button" class="disabled-input" id="btn-edit-another-job" onclick="window.location.reload(true)" disabled>edit another</button>
+
                     <!-- submit job edit to PUT endpoint -->
-                    <button type="submit" class="float-right" id="btn-update-job-post">submit</button>
+                    <button type="submit" class="float-right disabled-input" id="btn-update-job-post" disabled>submit</button>
                 </div>
                 <br /><br /><br />
 
