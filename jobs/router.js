@@ -15,7 +15,7 @@ const router = express.Router();
 // const { PORT, DATABASE_URL } = require('../config');
 
 const { Job } = require('./models');
-
+const { User } = require('../users/models');
 
 // ----- CRUD ENDPOINTS ----- 
 // (Create) post job enpoint
@@ -46,6 +46,7 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
     // console.log(req.body.email);
     // console.log(job);
 
+    technologies = technologies.split(",");
 
     // TODO: try to refactor the job edit page to hit the PUT endpoint
     // e.g. using AJAX method: 'PUT'

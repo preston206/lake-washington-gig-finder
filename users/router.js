@@ -7,10 +7,11 @@ const { User } = require('./models');
 const router = express.Router();
 
 const jsonParser = bodyParser.json();
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Post to register a new user
-router.post('/register', jsonParser, (req, res) => {
-  const requiredFields = ['username', 'password'];
+router.post('/register', jsonParser, urlencodedParser, (req, res) => {
+  const requiredFields = ['username', 'password', 'role'];
   const missingField = requiredFields.find(field => !(field in req.body));
 
   if (missingField) {
@@ -22,7 +23,7 @@ router.post('/register', jsonParser, (req, res) => {
     });
   }
 
-  const stringFields = ['username', 'password', 'firstName', 'lastName'];
+  const stringFields = ['username', 'password', 'role'];
   const nonStringField = stringFields.find(field =>
     (field in req.body) && typeof req.body[field] !== 'string'
   );
@@ -88,14 +89,15 @@ router.post('/register', jsonParser, (req, res) => {
     });
   }
 
-  let { username, password, firstName = '', lastName = '' } = req.body;
+  // let { username, password, firstName = '', lastName = '' } = req.body;
+  let { username, password, role } = req.body;
   // Username and password come in pre-trimmed, otherwise we throw an error
   // before this
-  firstName = firstName.trim();
-  lastName = lastName.trim();
+  // firstName = firstName.trim();
+  // lastName = lastName.trim();
 
   // creating api token
-  let apiToken = null;
+  // let apiToken = null;
 
   return User
     .find({ username })
@@ -118,9 +120,7 @@ router.post('/register', jsonParser, (req, res) => {
         .create({
           username,
           password: hash,
-          firstName,
-          lastName,
-          apiToken
+          role
         })
     })
     .then(user => {

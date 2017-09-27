@@ -28,6 +28,9 @@ const JobSchema = mongoose.Schema({
     },
     description: {
         type: String
+    },
+    postedBy: {
+        type: String
     }
 },
     {
@@ -48,7 +51,8 @@ JobSchema.methods.apiRepr = function () {
         city: this.city || '',
         email: this.email || '',
         technologies: this.technologies || '',
-        description: this.description || ''
+        description: this.description || '',
+        postedBy: this.postedBy || ''
     }
 }
 
