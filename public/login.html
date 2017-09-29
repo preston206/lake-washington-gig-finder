@@ -61,27 +61,37 @@
             </p>
         </form> -->
 
-        <div class="container float-left">
-            <!-- job edit form -->
-            <form id="form-login" method="POST" action="/auth/login">
-                <div class="form-group">
-                    <fieldset>
-                        <legend>Login</legend>
-                        <label for="login-username">Username</label>
-                        <input type="email" class="form-control" id="login-username" aria-describedby="loginUsernameHelp" name="username" placeholder="email@domain.com"
-                            required/>
-                        <small id="loginUsernameHelp" class="form-text text-muted">Your username is the email address that you registered with.</small>
+
+        <!-- TODO: switch username field back to email type -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+
+                    <!-- job edit form -->
+                    <form id="form-login" method="POST" action="/auth/login">
+                        <div class="form-group">
+                            <fieldset>
+                                <legend>Login</legend>
+                                <label for="login-username">Username</label>
+                                <input type="text" class="form-control" id="login-username" aria-describedby="loginUsernameHelp" name="username" placeholder="email@domain.com"
+                                    required/>
+                                <small id="loginUsernameHelp" class="form-text text-muted">Your username is the email address that you registered with.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" class="form-control" id="login-password" name="password" required/>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        </fieldset>
+                    </form>
+
                 </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" class="form-control" id="login-password" name="password" required/>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Submit</button>
-                </div>
-                </fieldset>
+            </div>
         </div>
-        </form>
+
     </main>
 
 

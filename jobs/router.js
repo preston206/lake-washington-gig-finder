@@ -29,7 +29,8 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
         "city",
         "email",
         "technologies",
-        "description"
+        "description",
+        "postedBy"
     ];
 
     for (let i = 0; i < requiredFields.length; i++) {
@@ -41,7 +42,7 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
         };
     };
 
-    let { company, title, salary, region, city, email, technologies, description } = req.body;
+    let { company, title, salary, region, city, email, technologies, description, postedBy } = req.body;
 
     // console.log(req.body);
     // console.log(req.body.email);
@@ -64,7 +65,8 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
             city,
             email,
             technologies,
-            description
+            description,
+            postedBy
         })
         .then(job => {
             return res.status(201).json({

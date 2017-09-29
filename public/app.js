@@ -12,6 +12,23 @@ function getOneJob(callbackFn) {
 
 // get ALL job posts
 function getAllJobs(callbackFn) {
+
+    // console.log("starting function...");
+
+    //     $.ajax({
+    //         method: 'GET',
+    //         url: 'http://localhost:8080/jobs/',
+    //         error: function (error) {
+    //             console.error("an error occurred.");
+    //         },
+    //         success: function () {
+    //             console.log("your data is ready.");
+    //         }
+    //     });
+
+    //     console.log("have you got your data yet?");
+
+
     let url = "http://localhost:8080/jobs/"
 
     $.ajax({
@@ -44,14 +61,22 @@ function deleteOneJob() {
 };
 
 // INDEX PAGE
-// login
+// login handler
 function login() {
     const formData = $(event.target);
     const username = formData.find('[name=username]').val().trim();
     const password = formData.find('[name=password]').val().trim();
     const base64encoded = window.btoa(username + ':' + password);
-    console.log(username, password);
-    console.log(base64encoded);
+    // console.log(username, password);
+    // console.log(base64encoded);
+
+    let localStorage;
+    let noLocalStorage;
+    try {
+        localStorage = window.localStorage;
+    } catch (error) {
+        let noLocalStorage = true;
+    };
 
     $.ajax({
         method: 'POST',
@@ -64,15 +89,21 @@ function login() {
             // console.log(error);
         },
         success: function (jqXHR) {
-            localStorage.setItem('authToken', jqXHR.authToken);
+            // console.log(jqXHR);
+            if (noLocalStorage) {
+                console.info("unable to access local storage");
+            }
+            else {
+                localStorage.setItem('authToken', jqXHR.authToken);
+                localStorage.setItem('userId', jqXHR.id);
+            };
             window.location.href = "find.html";
             // console.log("logged in.");
-            // console.log(jqXHR);
-            // let authToken = jqXHR.authToken;
             // console.log("authToken: ", authToken);
             // console.log("from local storage: ", localStorage.getItem('authToken'));
         }
     });
+    alert("have you logged in yet?");
 };
 
 // FIND PAGE
@@ -183,6 +214,8 @@ function postJob() {
         technologies[index] = technology.trim();
     });
 
+    let userIdFromLocalStorage = localStorage.userId;
+
     let data = {
         company: $('#post-company').val(),
         title: $('#post-title').val(),
@@ -191,7 +224,8 @@ function postJob() {
         city: $('#post-city').val(),
         email: $('#post-email').val(),
         technologies: technologies,
-        description: $('#post-description').val()
+        description: $('#post-description').val(),
+        postedBy: userIdFromLocalStorage || ''
     };
 
     $.ajax({
@@ -260,9 +294,21 @@ function updateJob() {
 
 // DOC READY FUNCTIONS
 $(function () {
+    // index.html - login form handler
+    $('#form-login').submit(function (event) {
+        event.preventDefault();
+        login();
+    });
+
     // find.html - get all jobs / refresh job list
     $('#btn-refresh-jobs').click(() => {
         getAllJobs(displayAllJobs);
+    });
+
+    // post.html - submit job post
+    $('#form-job-post').submit(function (event) {
+        event.preventDefault();
+        postJob();
     });
 
     // edit.html - populate fields with job data
@@ -292,21 +338,9 @@ $(function () {
         $('.disabled-input').attr("disabled", false);
     });
 
-    // post.html - submit job post
-    $('#form-job-post').submit(function (event) {
-        event.preventDefault();
-        postJob();
-    });
-
-    // delete job task
+    // delete one job post
     $('#btn-delete-job-post').click(() => {
         deleteOneJob();
-    });
-
-    // index.html - login form handler
-    $('#form-login').submit(function (event) {
-        event.preventDefault();
-        login();
     });
 
     // job post authorization

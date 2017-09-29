@@ -45,24 +45,31 @@
 
     <main>
 
-        <div class="job-listings-wrap">
+        <div class="container">
+            <div class="row">
 
-            <!-- the post button should enabled only if authorized -->
-            <!-- <button type="button" id="btn-goToPost">
+                <div class="col-6 job-listings-wrap">
+
+                    <!-- the post button should enabled only if authorized -->
+                    <!-- <button type="button" id="btn-goToPost">
                 Post a job
             </button> -->
 
-            <div id="job-listings">
+                    <div id="job-listings">
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="btn-refresh-jobs">Refresh</button>
+
+                </div>
+
+                <br />
+
+                <div class="col-6" id="job-description">
+                    <p>job description placeholder</p>
+                </div>
+
             </div>
 
-            <button type="button" id="btn-refresh-jobs">refresh jobs</button>
-
-        </div>
-
-        <br />
-
-        <div id="job-description">
-            <p>job description placeholder</p>
         </div>
 
     </main>

@@ -1,50 +1,58 @@
 /* global */
 
-body {
-    background-color: #777;
-}
 
-.btn-outline-dark:hover {
+/* .btn-outline-dark:hover {
     background-color: #428BCA;
-}
+} */
 
 .demoLogins {
     font-size: 13px;
 }
 
 
+/* index.html */
+
+.index-background {
+    background-color: #2e2e2e;
+}
+
+
 /* find.html */
 
+.navbar {
+    margin-bottom: 50px;
+}
+
 .job-listings-wrap {
-    float: left;
-    margin-right: 50px;
-    border: 1px solid lightblue;
-    width: 400px;
+    /* float: left;
+    margin-right: 50px; */
+    /* border: 1px solid lightblue; */
+    /* width: 400px; */
     height: 800px;
 }
 
 #job-listings {
-    width: 400px;
+    /* width: 400px; */
     height: 750px;
-    border-right: 7px solid lightgray;
-    border-top: 1px solid gray;
-    padding-left: 20px;
-    padding-right: 20px;
+    /* border-right: 7px solid lightgray; */
+    /* border-top: 1px solid gray; */
+    /* padding-left: 20px;
+    padding-right: 20px; */
     overflow: auto;
 }
 
-
 #btn-refresh-jobs {
     /* margin-left: 5px; */
-    margin-top: 5px;
+    margin-top: 25px;
 }
 
-#job-description {
-    /* width: 700px;
+
+/* #job-description {
+    width: 700px;
     height: 90%;
-    border: 1px solid red; */
+    border: 1px solid red;
     display: inline-block;
-}
+} */
 
 .job-post {
     background-color: lavender;

@@ -71,10 +71,12 @@ router.get('/post', jwtAuth, jsonParser, (req, res) => {
 
 // test route
 router.post('/login', basicAuth, (req, res) => {
-  // console.log(req);
+  // console.log(req.user);
   const authToken = createAuthToken(req.user.apiRepr());
+  const id = req.user._id;
   // console.log(authToken);
-  res.json({ authToken });
+  // console.log(id);
+  res.json({ authToken, id });
   // res.sendFile(path.join(__dirname, '../public', 'find.html'));
 
   // let localStorage;
