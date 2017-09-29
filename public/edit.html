@@ -49,7 +49,8 @@
 
                 <div class="col-4">
                     <p>select a job to edit</p>
-                    <p class="lead">placeholder for company job list</p>
+                    <div id="edit-job-list">
+                    </div>
                 </div>
 
                 <div class="col-8">
@@ -144,6 +145,12 @@
 
 
     <script src="/app.js"></script>
+
+    <script>
+        $(function () {
+            getJobsByUserId(displayJobsToEdit);
+        });
+    </script>
 
 </body>
 

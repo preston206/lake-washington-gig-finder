@@ -44,18 +44,6 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
 
     let { company, title, salary, region, city, email, technologies, description, postedBy } = req.body;
 
-    // console.log(req.body);
-    // console.log(req.body.email);
-    // console.log(job);
-
-    // if (typeof technologies == "string") {
-    //     technologies = technologies.split(",");
-    // };
-
-    // technologies.map(function (technology, index) {
-    //     technologies[index] = technology.trim();
-    // });
-
     return Job
         .create({
             company,
@@ -70,7 +58,7 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
         })
         .then(job => {
             return res.status(201).json({
-                message: "job has been posted.",
+                message: "Job has been posted.",
                 data: job.apiRepr()
             });
         })
@@ -119,11 +107,21 @@ router.get('/', (req, res) => {
         }));
 });
 
-// (Read) get ONE job
+// (Read) get ONE job by ID
 router.get('/getone/:id', (req, res) => {
     return Job
         .findById(req.params.id)
         .then(job => res.json(job.apiRepr()))
+        .catch(error => res.status(500).json({
+            message: 'Internal Server Error.'
+        }));
+});
+
+// (Read) find and get jobs posted by user
+router.get('/getmyjobs/:id', (req, res) => {
+    return Job
+        .find({ postedBy: req.params.id })
+        .then(jobs => res.json(jobs.map(job => job.apiRepr())))
         .catch(error => res.status(500).json({
             message: 'Internal Server Error.'
         }));
