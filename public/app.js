@@ -1,8 +1,34 @@
-// get ONE job post by ID
-function getOneJob(callbackFn) {
+let state = {
+    authToken: null,
+    userId: null,
+    noLocalStorage: false
+};
 
-    let id = $('#edit-job-id').val();
+// get ONE job post by ID
+function getOneJob(jobId, callbackFn) {
+
+    let id;
+
+    if (jobId) {
+        id = jobId
+    }
+    else {
+        id = $('#edit-job-id').val()
+    }
+
     let url = "http://localhost:8080/jobs/getone/" + id;
+
+    $.ajax({
+        url: url,
+        success: callbackFn
+    });
+};
+
+// get jobs by user ID
+function getJobsByUserId(callbackFn) {
+
+    let id = localStorage.userId || state.userId;
+    let url = "http://localhost:8080/jobs/getmyjobs/" + id;
 
     $.ajax({
         url: url,
@@ -55,27 +81,24 @@ function deleteOneJob() {
         url: url,
         method: "DELETE",
         success: function () {
-            console.info("job has been deleted.");
+            console.info("Job has been deleted.");
         }
     });
 };
 
 // INDEX PAGE
 // login handler
-function login() {
+function login(callbackFn) {
     const formData = $(event.target);
     const username = formData.find('[name=username]').val().trim();
     const password = formData.find('[name=password]').val().trim();
     const base64encoded = window.btoa(username + ':' + password);
-    // console.log(username, password);
-    // console.log(base64encoded);
 
     let localStorage;
-    let noLocalStorage;
     try {
         localStorage = window.localStorage;
     } catch (error) {
-        let noLocalStorage = true;
+        state.noLocalStorage = true;
     };
 
     $.ajax({
@@ -85,25 +108,27 @@ function login() {
             xhr.setRequestHeader('Authorization', 'Basic ' + base64encoded);
         },
         error: function (error) {
-            alert("a login error occurred.");
+            alert("A login error occurred.");
             // console.log(error);
         },
-        success: function (jqXHR) {
-            // console.log(jqXHR);
-            if (noLocalStorage) {
-                console.info("unable to access local storage");
-            }
-            else {
-                localStorage.setItem('authToken', jqXHR.authToken);
-                localStorage.setItem('userId', jqXHR.id);
-            };
-            window.location.href = "find.html";
-            // console.log("logged in.");
-            // console.log("authToken: ", authToken);
-            // console.log("from local storage: ", localStorage.getItem('authToken'));
-        }
+        success: callbackFn
     });
-    alert("have you logged in yet?");
+};
+
+function logUserInfo(data) {
+
+    if (state.noLocalStorage) {
+        console.info("Unable to access local storage");
+    }
+    else {
+        localStorage.setItem('authToken', data.authToken);
+        localStorage.setItem('userId', data.id);
+    };
+
+    state.userId = data.id;
+    state.authToken = data.authToken;
+
+    window.location.href = "find.html";
 };
 
 // FIND PAGE
@@ -112,10 +137,10 @@ function displayAllJobs(data) {
 
     let results = [];
 
-    let jobCheck = $('#job-listings').html();
+    let jobCheck = $('#all-job-listings').html();
 
     if (jobCheck) {
-        $('#job-listings').empty();
+        $('#all-job-listings').empty();
         $('#job-description').empty();
     };
 
@@ -196,7 +221,7 @@ function displayAllJobs(data) {
         results.push(jobPostHtml);
     });
 
-    $('#job-listings').html(results);
+    $('#all-job-listings').html(results);
 };
 
 // POST PAGE
@@ -214,8 +239,6 @@ function postJob() {
         technologies[index] = technology.trim();
     });
 
-    let userIdFromLocalStorage = localStorage.userId;
-
     let data = {
         company: $('#post-company').val(),
         title: $('#post-title').val(),
@@ -225,7 +248,7 @@ function postJob() {
         email: $('#post-email').val(),
         technologies: technologies,
         description: $('#post-description').val(),
-        postedBy: userIdFromLocalStorage || ''
+        postedBy: localStorage.userId || state.userId
     };
 
     $.ajax({
@@ -240,15 +263,112 @@ function postJob() {
 };
 
 // EDIT PAGE
+// display jobs by user ID
+function displayJobsToEdit(data) {
+
+    let results = [];
+
+    if (data.length === 0) {
+        $('#edit-job-list').html("You haven't posted any jobs yet.");
+    }
+    else {
+
+        // TODO: mode date process into new function (dont reuse code!)
+
+        data.map(function (job) {
+
+            let date = new Date(job.postDate);
+            let month = date.getMonth();
+            let day = date.getDate();
+
+            if (month) {
+                month++
+                switch (month) {
+                    case 1:
+                        month = "January";
+                        break;
+                    case 2:
+                        month = "February";
+                        break;
+                    case 3:
+                        month = "March";
+                        break;
+                    case 4:
+                        month = "April";
+                        break;
+                    case 5:
+                        month = "May";
+                        break;
+                    case 6:
+                        month = "June";
+                        break;
+                    case 7:
+                        month = "July";
+                        break;
+                    case 8:
+                        month = "August";
+                        break;
+                    case 9:
+                        month = "September";
+                        break;
+                    case 10:
+                        month = "October";
+                        break;
+                    case 11:
+                        month = "November";
+                        break;
+                    case 12:
+                        month = "December";
+                        break;
+                };
+            };
+
+            let jobPostHtml = $(`<div class="job-post-wrap">
+                <p class="job-post">
+                <span class="job-post-date">${month} ${day}</span><br />
+                ${job.city}<br />
+                ${job.salary}<br />
+                ${job.company}<br />
+                ${job.title}<br />
+                ${job.technologies}<br />
+                <span>posted by: </span>${job.postedBy}<br />
+                <span class="job-post-id">${job.id}</span></p></div>`);
+
+            let jobDescriptionHtml = $(`<p class="job-description">
+                <span class="job-description-date">${month} ${day}</span><br />
+                ${job.city}<br />
+                ${job.salary}<br />
+                ${job.company}<br />
+                ${job.title}<br />
+                ${job.technologies}<br />
+                <span class="job-description-id">${job.id}</span></p>`);
+
+            // let jobId = job.id;
+
+            $(jobPostHtml).each(function (event) {
+                $(this).on('click', function () {
+                    // console.log("this is a test!");
+                    getOneJob(job.id, populateEditPageFields);
+                });
+            });
+
+            results.push(jobPostHtml);
+        });
+
+        $('#edit-job-list').html(results);
+    };
+};
+
 // populate the edit page with data from ONE job post
 function populateEditPageFields(data) {
+    $('#edit-job-id').val(data.id);
     $('#edit-company').val(data.company);
     $('#edit-title').val(data.title);
     $('#edit-salary').val(data.salary);
     $('#edit-region').val(data.region);
     $('#edit-city').val(data.city);
     $('#edit-email').val(data.email);
-    console.log(data.technologies);
+    // console.log(data.technologies);
     $('#edit-technologies').val(data.technologies);
     $('#edit-description').val(data.description);
 };
@@ -297,7 +417,7 @@ $(function () {
     // index.html - login form handler
     $('#form-login').submit(function (event) {
         event.preventDefault();
-        login();
+        login(logUserInfo);
     });
 
     // find.html - get all jobs / refresh job list
