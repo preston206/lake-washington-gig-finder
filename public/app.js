@@ -194,22 +194,69 @@ function displayAllJobs(data) {
 
         let jobPostHtml = $(`<div class="job-post-wrap">
             <p class="job-post">
-            <span class="job-post-date">${month} ${day}</span><br />
-            ${job.city}<br />
-            ${job.salary}<br />
-            ${job.company}<br />
-            ${job.title}<br />
-            ${job.technologies}<br />
-            <span class="job-post-id">${job.id}</span></p></div>`);
+            <span class="font-weight-bold">Posted</span> <span>${month} ${day}</span><br />
+            <span class="font-weight-bold">by</span> <span>${job.company}</span><br />
+            <span class="font-weight-bold">for</span> <span>${job.title}</span><br />
+            <span class="font-weight-bold">in</span> <span>${job.city}</span><br />
+            <span class="font-weight-bold">at</span> <span>${job.salary}</span><br />
+            <span class="font-weight-bold">using</span> <span>${job.technologies}</span>
+            </p></div>`);
+
+        // <span class="job-post-id">${job.id}</span>
 
         let jobDescriptionHtml = $(`<p class="job-description">
-            <span class="job-description-date">${month} ${day}</span><br />
-            ${job.city}<br />
-            ${job.salary}<br />
-            ${job.company}<br />
-            ${job.title}<br />
-            ${job.technologies}<br />
-            <span class="job-description-id">${job.id}</span></p>`);
+
+            <h1 class="display-4">${job.company}</h1>
+            <br />
+
+            <span class="font-weight-bold">Posted on:</span><br />
+            <span class="lead">${month} ${day}</span>
+            <br />
+            <br />
+
+            <span class="font-weight-bold">
+            Title:</span><br />
+            <span class="lead">${job.title}</span>
+            <br />
+            <br />
+
+            <span class="font-weight-bold">
+            Located in:</span><br />
+            <span class="lead">${job.city}</span>
+            <br />
+            <br />
+
+            <span class="font-weight-bold">
+            Salary range:</span><br />
+            <span class="lead">${job.salary}</span>
+            <br />
+            <br />
+
+            <span class="font-weight-bold">
+            This job uses the following technologies:</span><br />
+            <span class="lead">${job.technologies}</span>
+            <br />
+            <br />
+
+            <span class="font-weight-bold">
+            Contact:</span><br />
+            <span class="lead">${job.email}</span>
+            <br />
+            <br />
+
+            <span class="font-weight-bold">
+            Job description and other details:</span>
+            <p class="lead">${job.description}</p>
+            <br />
+
+            <button type="button" class="btn btn-secondary btn-sm" id="save-job">
+            Save
+            </button>
+            <br />
+
+            <small class="job-post-id">Job ID: ${job.id}</small>
+
+            </p>`);
 
         $(jobPostHtml).each(function (event) {
             $(this).on('click', function () {

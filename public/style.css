@@ -1,5 +1,9 @@
 /* global */
 
+nav {
+    margin-bottom: 50px;
+}
+
 
 /* .btn-outline-dark:hover {
     background-color: #428BCA;
@@ -19,8 +23,12 @@
 
 /* find.html */
 
-.navbar {
-    margin-bottom: 50px;
+.job-post-wrap {
+    padding: 5px;
+}
+
+.job-post {
+    padding: 5px;
 }
 
 .job-listings-wrap {
@@ -28,10 +36,10 @@
     margin-right: 50px; */
     /* border: 1px solid lightblue; */
     /* width: 400px; */
-    height: 800px;
+    height: 850px;
 }
 
-#job-listings {
+#all-job-listings {
     /* width: 400px; */
     height: 750px;
     /* border-right: 7px solid lightgray; */
@@ -41,34 +49,35 @@
     overflow: auto;
 }
 
-#btn-refresh-jobs {
-    /* margin-left: 5px; */
-    margin-top: 25px;
-}
 
-
-/* #job-description {
-    width: 700px;
-    height: 90%;
-    border: 1px solid red;
-    display: inline-block;
+/* #btn-refresh-jobs {
+    margin-left: 5px;
+    margin-top: 20px;
 } */
+
+#job-description {
+    height: 750px;
+    overflow: auto;
+    border: 1px solid #bbb;
+    border-radius: 7px;
+    /* margin-top: 34px; */
+}
 
 .job-post {
     background-color: lavender;
 }
 
 .job-post:hover {
-    background-color: orange;
+    background-color: lightblue;
     cursor: pointer;
 }
 
-.job-post-date {
-    font-weight: bold;
+.job-post-id {
+    color: #ddd;
 }
 
-.job-post-id {
-    color: #ccc;
+.find-page-buttons {
+    margin-top: 20px;
 }
 
 
