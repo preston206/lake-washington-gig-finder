@@ -80,6 +80,13 @@ nav {
     margin-top: 20px;
 }
 
+.job-description-textarea {
+    border: 0;
+    width: 100%;
+    height: 400px;
+    resize: none;
+}
+
 
 /* edit.html */
 
@@ -89,4 +96,5 @@ nav {
 
 #edit-job-list {
     height: 750px;
+    overflow: auto;
 }

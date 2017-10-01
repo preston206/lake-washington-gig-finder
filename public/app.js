@@ -246,8 +246,11 @@ function displayAllJobs(data) {
 
             <span class="font-weight-bold">
             Job description and other details:</span>
-            <p class="lead">${job.description}</p>
             <br />
+            <textarea class="job-description-textarea lead" readonly>${job.description}</textarea>
+            <br />
+            
+            <hr class="my-3" />
 
             <button type="button" class="btn btn-secondary btn-sm" id="save-job">
             Save
