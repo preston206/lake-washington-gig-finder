@@ -15,7 +15,7 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
             <a class="navbar-brand" href="#">Gig Finder</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -48,32 +48,39 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-6 job-listings-wrap">
-
-
-
-                    <div id="all-job-listings">
-                    </div>
-
-                    <div class="find-page-buttons">
-                        <span class="font-weight-bold lead">
-                            Filter by region: 
-                        </span>
-                        <button class="btn btn-success" id="nw">NW</button>
-                        <button class="btn btn-success" id="ne">NE</button>
-                        <button class="btn btn-success" id="se">SE</button>
-                        <button class="btn btn-success" id="sw">SW</button>
-
-                        <button type="button" class="btn btn-primary float-right" id="btn-refresh-jobs">
-                            Refresh
-                        </button>
-                    </div>
-
+                <div class="col-12 text-center mb-3">
+                    <span class="font-weight-bold text-light">Click on a job to view the details.</span>
                 </div>
 
-                <br />
+                <div class="col-6">
+                    <div id="all-job-listings">
+                    </div>
+                </div>
 
-                <div class="col-6" id="job-description">
+                <div id="job-description" class="col-6 bg-light">
+                </div>
+
+                <div class="col-12 mt-4">
+                    <span class="font-weight-bold text-light lead">
+                        Filter by region: 
+                    </span>
+
+                    <button class="btn btn-success" id="btn-filter-nw">NW</button>
+                    <button class="btn btn-success" id="btn-filter-ne">NE</button>
+                    <button class="btn btn-success" id="btn-filter-se">SE</button>
+                    <button class="btn btn-success" id="btn-filter-sw">SW</button>
+
+                    <span class="text-light"> | </span>
+
+                    <button class="btn btn-outline-secondary" id="btn-filter-saved" title="Show your saved jobs." disabled>
+                        Saved
+                    </button>
+
+                    <span class="text-light"> | </span>
+
+                    <button type="button" class="btn btn-primary" id="btn-refresh-jobs">
+                        Refresh
+                    </button>
                 </div>
 
             </div>

@@ -193,7 +193,7 @@ function displayAllJobs(data) {
         };
 
         let jobPostHtml = $(`<div class="job-post-wrap">
-            <p class="job-post">
+            <p class="job-post p-1">
             <span class="font-weight-bold">Posted</span> <span>${month} ${day}</span><br />
             <span class="font-weight-bold">by</span> <span>${job.company}</span><br />
             <span class="font-weight-bold">for</span> <span>${job.title}</span><br />
@@ -247,12 +247,12 @@ function displayAllJobs(data) {
             <span class="font-weight-bold">
             Job description and other details:</span>
             <br />
-            <textarea class="job-description-textarea lead" readonly>${job.description}</textarea>
+            <textarea class="job-description-textarea bg-light lead" readonly>${job.description}</textarea>
             <br />
             
             <hr class="my-3" />
 
-            <button type="button" class="btn btn-secondary btn-sm" id="save-job">
+            <button type="button" class="btn btn-warning btn-sm" id="save-job">
             Save
             </button>
             <br />
@@ -374,7 +374,7 @@ function displayJobsToEdit(data) {
             };
 
             let jobPostHtml = $(`<div class="job-post-wrap">
-                <p class="job-post">
+                <p class="job-post p-1">
                 <span class="job-post-date">${month} ${day}</span><br />
                 ${job.city}<br />
                 ${job.salary}<br />

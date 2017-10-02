@@ -1,13 +1,8 @@
 /* global */
 
-nav {
-    margin-bottom: 50px;
+body {
+    background-color: #111;
 }
-
-
-/* .btn-outline-dark:hover {
-    background-color: #428BCA;
-} */
 
 .demoLogins {
     font-size: 13px;
@@ -23,61 +18,30 @@ nav {
 
 /* find.html */
 
-.job-post-wrap {
-    padding: 5px;
-}
-
-.job-post {
-    padding: 5px;
-}
-
-.job-listings-wrap {
-    /* float: left;
-    margin-right: 50px; */
-    /* border: 1px solid lightblue; */
-    /* width: 400px; */
-    height: 850px;
-}
-
 #all-job-listings {
-    /* width: 400px; */
-    height: 750px;
-    /* border-right: 7px solid lightgray; */
-    /* border-top: 1px solid gray; */
-    /* padding-left: 20px;
-    padding-right: 20px; */
+    height: 800px;
     overflow: auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
 }
-
-
-/* #btn-refresh-jobs {
-    margin-left: 5px;
-    margin-top: 20px;
-} */
 
 #job-description {
-    height: 750px;
+    height: 800px;
     overflow: auto;
-    border: 1px solid #bbb;
-    border-radius: 7px;
-    /* margin-top: 34px; */
+    border-radius: 8px;
 }
 
 .job-post {
-    background-color: lavender;
+    background-color: rgba(66, 134, 244, 0.15);
 }
 
 .job-post:hover {
-    background-color: lightblue;
+    background-color: rgba(0, 200, 80, 0.3);
     cursor: pointer;
 }
 
 .job-post-id {
     color: #ddd;
-}
-
-.find-page-buttons {
-    margin-top: 20px;
 }
 
 .job-description-textarea {
@@ -95,6 +59,6 @@ nav {
 }
 
 #edit-job-list {
-    height: 750px;
+    height: 800px;
     overflow: auto;
 }
