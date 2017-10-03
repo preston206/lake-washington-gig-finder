@@ -14,7 +14,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
             <a class="navbar-brand" href="#">Gig Finder</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -47,31 +47,40 @@
         <div class="container">
             <div class="row">
 
+                <div class="col-12">
+                    <p class="text-light font-weight-bold">
+                        These are the jobs you have posted. To edit, click on one of the job posts. To delete, scroll to the bottom of the job post.
+                    </p>
+                </div>
+
                 <div class="col-4">
-                    <p>select a job to edit</p>
-                    <div id="edit-job-list">
+                    <div id="edit-job-list" class="bg-light">
                     </div>
                 </div>
 
-                <div class="col-8">
+                <div class="col-8" id="formDiv">
                     <!-- job edit form -->
-                    <form id="form-job-edit" method="#" action="#">
+                    <form id="form-job-edit" class="bg-light p-2" method="#" action="#">
+
                         <div class="form-group">
                             <label for="edit-job-id">Job ID</label>
-                            <small id="editFillJobIDHelp" class="form-text">Fill in the job ID and click the fill button.</small>
-                            <input type="text" class="form-control" id="edit-job-id" name="id" aria-describedby="editFillJobIDHelp" required />
+                            <input type="text" class="form-control" id="edit-job-id" name="id" aria-describedby="editFillJobIDHelp" disabled required
+                            />
                         </div>
+
                         <div class="form-group">
                             <label for="edit-company">Company</label>
-                            <input type="text" class="form-control disabled-input" id="edit-company" name="company" disabled required />
+                            <input type="text" class="form-control disabled-input" id="edit-company" name="company" required />
                         </div>
+
                         <div class="form-group">
                             <label for="edit-title">Title</label>
-                            <input type="text" class="form-control disabled-input" id="edit-title" name="title" disabled required />
+                            <input type="text" class="form-control disabled-input" id="edit-title" name="title" required />
                         </div>
+
                         <div class="form-group">
                             <label for="edit-salary">Salary</label>
-                            <select class="form-control disabled-input" id="edit-salary" name="salary" disabled required>
+                            <select class="form-control disabled-input" id="edit-salary" name="salary" required>
                         <option></option>
                         <option>less than 30K</option>
                         <option>30K - 39K</option>
@@ -88,9 +97,10 @@
                         <option>more than 140K</option>
                     </select>
                         </div>
+
                         <div class="form-group">
                             <label for="edit-region">Region</label>
-                            <select class="form-control disabled-input" id="edit-region" name="region" disabled required>
+                            <select class="form-control disabled-input" id="edit-region" name="region" required>
                         <option></option>
                         <option>NW</option>
                         <option>NE</option>
@@ -98,48 +108,47 @@
                         <option>SW</option>
                     </select>
                         </div>
+
                         <div class="form-group">
                             <label for="edit-city">City</label>
-                            <input type="text" class="form-control disabled-input" id="edit-city" name="city" disabled required />
+                            <input type="text" class="form-control disabled-input" id="edit-city" name="city" required />
                         </div>
+
                         <div class="form-group">
                             <label for="edit-email">Email</label>
-                            <input type="email" class="form-control disabled-input" id="edit-email" name="email" disabled required />
+                            <input type="email" class="form-control disabled-input" id="edit-email" name="email" required />
                         </div>
+
                         <div class="form-group">
                             <label for="edit-technologies">Technologies</label>
                             <input type="text" class="form-control disabled-input" id="edit-technologies" name="technologies" placeholder="e.g. HTML, CSS, React"
-                                disabled required />
+                                required />
                         </div>
+
                         <div class="form-group">
-                            <label for="edit-description">Description</label>
-                            <textarea class="form-control disabled-input" name="description" id="edit-description" disabled required></textarea>
+                            <label for="edit-description-textarea">Description</label>
+                            <textarea class="form-control disabled-input" name="description" id="edit-description-textarea" required></textarea>
                         </div>
+
                         <div class="form-group">
-                            <!-- fill button to grab job data by ID -->
-                            <button type="button" class="float-left" id="btn-fill-edit-page">fill</button>
+                            <!-- submit job update to PUT endpoint -->
+                            <button type="submit" class="btn btn-primary" id="btn-update-job-post" disabled>Submit</button>
 
-                            <!-- refresh the page to edit another job post -->
-                            <button type="button" class="disabled-input" id="btn-edit-another-job" onclick="window.location.reload(true)" disabled>edit another</button>
-
-                            <!-- submit job edit to PUT endpoint -->
-                            <button type="submit" class="float-right disabled-input" id="btn-update-job-post" disabled>submit</button>
-                        </div>
-                        <br /><br />
-
-                        <div class="form-check">
-                            <small id="editDeleteCheckboxHelp" class="form-text">To delete, check the box and click the button.</small>
-                            <label class="form-check-label" for="#">
-                    <input class="form-check-input" type="checkbox" id="checkbox-edit-delete" value="option1" aria-describedby="editDeleteCheckboxHelp" />
-                    </label>
-                            <button type="button" id="btn-delete-job-post" disabled>delete</button>
+                            <div class="mt-5 border border-danger p-4">
+                                <span class="form-text text-dark font-weight-bold">To delete <i>this</i> job post, check the box and click the button.</span>
+                                <label class="form-check-label" for="#">
+                                <input class="form-check-input disabled-input" type="checkbox" id="checkbox-delete" disabled />
+                                </label>
+                                <button type="button" class="btn btn-dark" id="btn-delete-job-post" disabled>Delete</button>
+                            </div>
                         </div>
 
+                    </form>
                 </div>
-            </div>
 
+            </div>
         </div>
-        </form>
+
 
     </main>
 
@@ -148,6 +157,7 @@
 
     <script>
         $(function () {
+            $('.disabled-input').attr('disabled', true);
             getJobsByUserId(displayJobsToEdit);
         });
     </script>

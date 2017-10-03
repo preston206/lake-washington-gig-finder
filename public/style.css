@@ -21,7 +21,6 @@ body {
 #all-job-listings {
     height: 800px;
     overflow: auto;
-    background-color: #f9f9f9;
     border-radius: 8px;
 }
 
@@ -54,11 +53,24 @@ body {
 
 /* edit.html */
 
-#checkbox-edit-delete {
-    margin-right: 235px;
+#checkbox-delete {
+    margin-right: 350px;
 }
 
 #edit-job-list {
     height: 800px;
     overflow: auto;
+    border-radius: 8px;
+}
+
+#form-job-edit {
+    height: 800px;
+    overflow: auto;
+    border-radius: 8px;
+}
+
+#edit-description-textarea {
+    width: 100%;
+    height: 400px;
+    resize: none;
 }

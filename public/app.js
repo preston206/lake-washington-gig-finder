@@ -5,17 +5,7 @@ let state = {
 };
 
 // get ONE job post by ID
-function getOneJob(jobId, callbackFn) {
-
-    let id;
-
-    if (jobId) {
-        id = jobId
-    }
-    else {
-        id = $('#edit-job-id').val()
-    }
-
+function getOneJob(id, callbackFn) {
     let url = "http://localhost:8080/jobs/getone/" + id;
 
     $.ajax({
@@ -60,29 +50,6 @@ function getAllJobs(callbackFn) {
     $.ajax({
         url: url,
         success: callbackFn
-    });
-};
-
-// delete ONE job post by ID
-function deleteOneJob() {
-    let id = $('#edit-job-id').val();
-    let url = "http://localhost:8080/jobs/delete/" + id;
-
-    // $.ajax({
-    //     url: url,
-    //     id: id,
-    //     method: "DELETE",
-    //     success: function () {
-    //         console.info("job has been deleted.");
-    //     }
-    // });
-
-    $.ajax({
-        url: url,
-        method: "DELETE",
-        success: function () {
-            console.info("Job has been deleted.");
-        }
     });
 };
 
@@ -192,7 +159,7 @@ function displayAllJobs(data) {
             };
         };
 
-        let jobPostHtml = $(`<div class="job-post-wrap">
+        let jobPostHtml = $(`<div class="job-post-wrap m-1">
             <p class="job-post p-1">
             <span class="font-weight-bold">Posted</span> <span>${month} ${day}</span><br />
             <span class="font-weight-bold">by</span> <span>${job.company}</span><br />
@@ -307,7 +274,8 @@ function postJob() {
         data: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
         success: function () {
-            console.info("from AJAX call: job has been posted.");
+            console.info("job has been posted.");
+            window.location.reload(true);
         }
     });
 };
@@ -323,7 +291,7 @@ function displayJobsToEdit(data) {
     }
     else {
 
-        // TODO: mode date process into new function (dont reuse code!)
+        // TODO: move date process into new function (dont reuse code!)
 
         data.map(function (job) {
 
@@ -373,32 +341,21 @@ function displayJobsToEdit(data) {
                 };
             };
 
-            let jobPostHtml = $(`<div class="job-post-wrap">
-                <p class="job-post p-1">
-                <span class="job-post-date">${month} ${day}</span><br />
-                ${job.city}<br />
-                ${job.salary}<br />
-                ${job.company}<br />
-                ${job.title}<br />
-                ${job.technologies}<br />
-                <span>posted by: </span>${job.postedBy}<br />
-                <span class="job-post-id">${job.id}</span></p></div>`);
-
-            let jobDescriptionHtml = $(`<p class="job-description">
-                <span class="job-description-date">${month} ${day}</span><br />
-                ${job.city}<br />
-                ${job.salary}<br />
-                ${job.company}<br />
-                ${job.title}<br />
-                ${job.technologies}<br />
-                <span class="job-description-id">${job.id}</span></p>`);
-
-            // let jobId = job.id;
+            let jobPostHtml = $(`<div class="job-post-wrap m-1">
+            <p class="job-post p-1">
+            <span class="font-weight-bold">Posted</span> <span>${month} ${day}</span><br />
+            <span class="font-weight-bold">for</span> <span>${job.title}</span><br />
+            <span class="font-weight-bold">in</span> <span>${job.city}</span><br />
+            <span class="font-weight-bold">Job ID: </span> <span>${job.id}</span><br />
+            </p></div>`);
 
             $(jobPostHtml).each(function (event) {
                 $(this).on('click', function () {
-                    // console.log("this is a test!");
                     getOneJob(job.id, populateEditPageFields);
+                    $('.disabled-input').attr('disabled', false);
+                    $('#checkbox-delete').prop('checked', false);
+                    $('#btn-delete-job-post').attr("disabled", true);
+                    $('#btn-update-job-post').attr('disabled', true);
                 });
             });
 
@@ -418,9 +375,8 @@ function populateEditPageFields(data) {
     $('#edit-region').val(data.region);
     $('#edit-city').val(data.city);
     $('#edit-email').val(data.email);
-    // console.log(data.technologies);
     $('#edit-technologies').val(data.technologies);
-    $('#edit-description').val(data.description);
+    $('#edit-description-textarea').val(data.description);
 };
 
 // send updated job data to jobs PUT endpoint
@@ -447,7 +403,7 @@ function updateJob() {
         city: $('#edit-city').val(),
         email: $('#edit-email').val(),
         technologies: technologies,
-        description: $('#edit-description').val()
+        description: $('#edit-description-textarea').val()
     };
 
     $.ajax({
@@ -456,12 +412,39 @@ function updateJob() {
         data: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
         success: function () {
-            console.info("from AJAX call: job has been updated.");
+            console.info("job has been updated.");
+            window.location.reload(true);
         }
     });
 };
 
+// delete ONE job post by ID
+function deleteOneJob() {
+    let id = $('#edit-job-id').val();
 
+    let confirmMsg = confirm("Your job post will be deleted. Confirm?");
+
+    if (confirmMsg === true) {
+
+        let url = "http://localhost:8080/jobs/delete/" + id;
+
+        $.ajax({
+            url: url,
+            method: "DELETE",
+            success: function () {
+                console.info("Job has been deleted.");
+            }
+        });
+
+        window.location.reload(true);
+    }
+    else {
+        return;
+    }
+};
+
+
+/////////////////////////
 // DOC READY FUNCTIONS
 $(function () {
     // index.html - login form handler
@@ -481,14 +464,9 @@ $(function () {
         postJob();
     });
 
-    // edit.html - populate fields with job data
-    $('#btn-fill-edit-page').click(() => {
-        getOneJob(populateEditPageFields);
-    });
-
-    // edit.html - disable\enable delete button
-    $('#checkbox-edit-delete').on('change', function () {
-        if ($('#checkbox-edit-delete').prop("checked")) {
+    // edit.html - disable\enable delete job post button
+    $('#checkbox-delete').on('change', function () {
+        if ($('#checkbox-delete').prop("checked")) {
             $('#btn-delete-job-post').attr("disabled", false);
         }
         else {
@@ -502,13 +480,12 @@ $(function () {
         updateJob();
     });
 
-    // edit.html - enable fields upon imported job data; and disable job id input
-    $('#btn-fill-edit-page').click(function () {
-        $('#edit-job-id').attr("disabled", true);
-        $('.disabled-input').attr("disabled", false);
+    // edit.html - listen for form change to enable submit button
+    $('#formDiv form').on('keyup change', 'input, select, textarea', function () {
+        $('#btn-update-job-post').attr('disabled', false);
     });
 
-    // delete one job post
+    // edit.html - delete one job post
     $('#btn-delete-job-post').click(() => {
         deleteOneJob();
     });
