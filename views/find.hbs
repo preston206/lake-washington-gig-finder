@@ -1,0 +1,52 @@
+<main>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 text-center mb-3">
+                <span class="font-weight-bold text-light">Click on a job post to view the details.</span>
+            </div>
+
+            <div class="col-6">
+                <div id="all-job-listings" class="bg-light">
+                </div>
+            </div>
+
+            <div id="job-description" class="col-6 bg-light">
+            </div>
+
+            <div class="col-12 mt-4">
+                <span class="font-weight-bold text-light lead">
+                        Filter by region: 
+                    </span>
+
+                <button class="btn btn-success" id="btn-filter-nw">NW</button>
+                <button class="btn btn-success" id="btn-filter-ne">NE</button>
+                <button class="btn btn-success" id="btn-filter-se">SE</button>
+                <button class="btn btn-success" id="btn-filter-sw">SW</button>
+
+                <span class="text-light"> | </span>
+
+                <button class="btn btn-outline-secondary" id="btn-filter-saved" title="Show your saved jobs." disabled>
+                        Saved
+                    </button>
+
+                <span class="text-light"> | </span>
+
+                <button type="button" class="btn btn-primary" id="btn-refresh-jobs">
+                        Refresh
+                    </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script src="/app.js"></script>
+
+<script>
+    $(function () {
+        getAllJobs(displayAllJobs);
+    });
+</script>
