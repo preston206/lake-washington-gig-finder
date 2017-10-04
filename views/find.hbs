@@ -1,36 +1,46 @@
 <main>
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
 
             <div class="col-12 text-center mb-3">
-                <span class="font-weight-bold text-light">Click on a job post to view the details.</span>
+                <h1 class="text-light">Click on a job post to view the details.</h1>
             </div>
 
-            <div class="col-6">
-                <div id="all-job-listings" class="bg-light">
+            {{!-- <div class="col-1"></div> --}}
+
+            <div id="map" class="col-2"></div>
+
+            {{!-- <div class="col-1"></div> --}}
+
+            {{!-- <div class="col-6"> --}}
+                <div id="all-job-listings" class="col-4 ml-5 mr-5 bg-light">
                 </div>
+            {{!-- </div> --}}
+
+            {{!-- <div class="col-1"></div> --}}
+
+            <div id="job-description" class="col-4 bg-light">
             </div>
 
-            <div id="job-description" class="col-6 bg-light">
-            </div>
+            {{!-- <div class="col-1"></div> --}}
 
-            <div class="col-12 mt-4">
-                <span class="font-weight-bold text-light lead">
+            <div class="col-6 mt-4">
+                <span class="font-weight-bold text-light lead mr-3">
                         Filter by region: 
                     </span>
 
-                <button class="btn btn-success" id="btn-filter-nw">NW</button>
-                <button class="btn btn-success" id="btn-filter-ne">NE</button>
-                <button class="btn btn-success" id="btn-filter-se">SE</button>
-                <button class="btn btn-success" id="btn-filter-sw">SW</button>
+                <button class="btn btn-success mr-3" id="btn-filter-nw">NW</button>
+                <button class="btn btn-success mr-3" id="btn-filter-ne">NE</button>
+                <button class="btn btn-success mr-3" id="btn-filter-se">SE</button>
+                <button class="btn btn-success mr-3" id="btn-filter-sw">SW</button>
 
-                <span class="text-light"> | </span>
+                <span class="text-light mr-3"> | </span>
 
-                <button class="btn btn-outline-secondary" id="btn-filter-saved" title="Show your saved jobs." disabled>
+                <button class="btn btn-outline-secondary mr-3" id="btn-filter-saved" title="Show your saved jobs." disabled>
                         Saved
                     </button>
 
-                <span class="text-light"> | </span>
+                <span class="text-light mr-3"> | </span>
 
                 <button type="button" class="btn btn-primary" id="btn-refresh-jobs">
                         Refresh

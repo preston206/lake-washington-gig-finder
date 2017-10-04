@@ -18,6 +18,12 @@ body {
 
 /* find.html */
 
+#map {
+    background-image: url("/img/lakeWA_crop.png");
+    height: 800px;
+    border-radius: 8px;
+}
+
 #all-job-listings {
     height: 800px;
     overflow: auto;
