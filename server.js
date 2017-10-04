@@ -109,7 +109,7 @@ app.get('/register', (req, res) => {
 });
 
 // get job edit page
-app.get('/login', (req, res) => {
+app.get('/login/', (req, res) => {
     res.render('login', {
         title: 'Gig Finder | Login',
         nav: true

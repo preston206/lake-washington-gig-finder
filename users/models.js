@@ -16,6 +16,10 @@ const UserSchema = mongoose.Schema({
   role: {
     type: String,
     default: ""
+  },
+  savedJobs: {
+    type: Array,
+    default: []
   }
 });
 
@@ -23,7 +27,8 @@ UserSchema.methods.apiRepr = function () {
   return {
     id: this._id,
     username: this.username || '',
-    role: this.role || ''
+    role: this.role || '',
+    savedJobs: this.savedJobs || []
   };
 }
 

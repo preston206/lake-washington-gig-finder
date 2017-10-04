@@ -6,31 +6,40 @@ mongoose.Promise = global.Promise;
 // ----- Job Model -----
 const JobSchema = mongoose.Schema({
     company: {
-        type: String
+        type: String,
+        required: true
     },
     title: {
-        type: String
+        type: String,
+        required: true
     },
     salary: {
-        type: String
+        type: String,
+        required: true
     },
     region: {
-        type: String
+        type: String,
+        required: true
     },
     city: {
-        type: String
+        type: String,
+        required: true
     },
     email: {
-        type: String
+        type: String,
+        required: true
     },
     technologies: {
-        type: Array
+        type: Array,
+        required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     postedBy: {
-        type: String
+        type: String,
+        required: true
     }
 },
     {
