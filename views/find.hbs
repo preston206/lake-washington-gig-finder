@@ -5,46 +5,43 @@
             <div class="col-12 text-center mb-3">
                 <h1 class="text-light">Click on a job post to view the details.</h1>
             </div>
-
-            {{!-- <div class="col-1"></div> --}}
-
+            
             <div id="map" class="col-2"></div>
 
-            {{!-- <div class="col-1"></div> --}}
-
-            {{!-- <div class="col-6"> --}}
-                <div id="all-job-listings" class="col-4 ml-5 mr-5 bg-light">
-                </div>
-            {{!-- </div> --}}
-
-            {{!-- <div class="col-1"></div> --}}
-
+            <div id="all-job-listings" class="col-4 ml-5 mr-5 bg-light">
+            </div>
+            
             <div id="job-description" class="col-4 bg-light">
             </div>
 
-            {{!-- <div class="col-1"></div> --}}
-
             <div class="col-6 mt-4">
                 <span class="font-weight-bold text-light lead mr-3">
-                        Filter by region: 
-                    </span>
+                    Filter by region: 
+                </span>
 
-                <button class="btn btn-success mr-3" id="btn-filter-nw">NW</button>
-                <button class="btn btn-success mr-3" id="btn-filter-ne">NE</button>
-                <button class="btn btn-success mr-3" id="btn-filter-se">SE</button>
-                <button class="btn btn-success mr-3" id="btn-filter-sw">SW</button>
-
-                <span class="text-light mr-3"> | </span>
-
-                <button class="btn btn-outline-secondary mr-3" id="btn-filter-saved" title="Show your saved jobs." disabled>
-                        Saved
-                    </button>
+                <button class="btn btn-success mr-3" id="btn-filter-nw" value="NW">NW</button>
+                <button class="btn btn-success mr-3" id="btn-filter-ne" value="NE">NE</button>
+                <button class="btn btn-success mr-3" id="btn-filter-se" value="SE">SE</button>
+                <button class="btn btn-success mr-3" id="btn-filter-sw" value="SW">SW</button>
 
                 <span class="text-light mr-3"> | </span>
+
+                {{!--
+                the saved jobs button is for a future feature. It would 
+                display the jobs that the user has saved. The button should 
+                start out disabled and then get enabled if the user's "savedJobs" array has content.
+                --}}
+                {{!--
+                <button class="btn btn-warning mr-3" id="btn-filter-saved" title="Show your saved jobs.">
+                    Saved
+                </button>
+                --}}
+
+                {{!-- <span class="text-light mr-3"> | </span> --}}
 
                 <button type="button" class="btn btn-primary" id="btn-refresh-jobs">
-                        Refresh
-                    </button>
+                    Refresh
+                </button>
             </div>
 
         </div>
@@ -59,4 +56,5 @@
     $(function () {
         getAllJobs(displayAllJobs);
     });
+
 </script>

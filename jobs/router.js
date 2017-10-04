@@ -101,6 +101,7 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
 router.get('/', (req, res) => {
     return Job
         .find()
+        .sort({ postDate: -1 })
         .then(jobs => res.json(jobs.map(job => job.apiRepr())))
         .catch(error => res.status(500).json({
             message: 'Internal Server Error.'
@@ -121,13 +122,25 @@ router.get('/getone/:id', (req, res) => {
 router.get('/getmyjobs/:id', (req, res) => {
     return Job
         .find({ postedBy: req.params.id })
+        .sort({ postDate: -1 })
         .then(jobs => res.json(jobs.map(job => job.apiRepr())))
         .catch(error => res.status(500).json({
             message: 'Internal Server Error.'
         }));
 });
 
-// (Update) put job
+// (Read) find and get jobs by region
+router.get('/region/:region', (req, res) => {
+    return Job
+        .find({ region: req.params.region })
+        .sort({ postDate: -1 })
+        .then(jobs => res.json(jobs.map(job => job.apiRepr())))
+        .catch(error => res.status(500).json({
+            message: 'Internal Server Error.'
+        }));
+});
+
+// (Update / PUT) modify job post
 router.put('/update/:id', jsonParser, urlencodedParser, (request, response) => {
     // let technologies = request.body.technologies;
 

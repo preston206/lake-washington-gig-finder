@@ -26,24 +26,19 @@ function getJobsByUserId(callbackFn) {
     });
 };
 
+// get jobs by region
+function getJobsByRegion(region, callbackFn) {
+
+    let url = "http://localhost:8080/jobs/region/" + region;
+
+    $.ajax({
+        url: url,
+        success: callbackFn
+    });
+};
+
 // get ALL job posts
 function getAllJobs(callbackFn) {
-
-    // console.log("starting function...");
-
-    //     $.ajax({
-    //         method: 'GET',
-    //         url: 'http://localhost:8080/jobs/',
-    //         error: function (error) {
-    //             console.error("an error occurred.");
-    //         },
-    //         success: function () {
-    //             console.log("your data is ready.");
-    //         }
-    //     });
-
-    //     console.log("have you got your data yet?");
-
 
     let url = "http://localhost:8080/jobs/"
 
@@ -82,6 +77,7 @@ function login(callbackFn) {
     });
 };
 
+// save user id and auth token to local storage and app state
 function logUserInfo(data) {
 
     if (state.noLocalStorage) {
@@ -95,7 +91,7 @@ function logUserInfo(data) {
     state.userId = data.id;
     state.authToken = data.authToken;
 
-    window.location.href = "find.html";
+    window.location.href = "/find";
 };
 
 // FIND PAGE
@@ -164,6 +160,7 @@ function displayAllJobs(data) {
             <span class="font-weight-bold">Posted</span> <span>${month} ${day}</span><br />
             <span class="font-weight-bold">by</span> <span>${job.company}</span><br />
             <span class="font-weight-bold">for</span> <span>${job.title}</span><br />
+            <span class="font-weight-bold">region</span> <span>${job.region}</span><br />
             <span class="font-weight-bold">in</span> <span>${job.city}</span><br />
             <span class="font-weight-bold">at</span> <span>${job.salary}</span><br />
             <span class="font-weight-bold">using</span> <span>${job.technologies}</span>
@@ -219,11 +216,6 @@ function displayAllJobs(data) {
             
             <hr class="my-3" />
 
-            <button type="button" class="btn btn-warning btn-sm" id="save-job">
-            Save
-            </button>
-            <br />
-
             <small class="job-post-id">Job ID: ${job.id}</small>
 
             </p>`);
@@ -237,6 +229,16 @@ function displayAllJobs(data) {
 
         results.push(jobPostHtml);
     });
+
+    // The save button is for a future feature. It would
+    // send the job ID to a PUT endpoint. See Users model for details.
+    // Then the user could display the jobs they've saved on
+    // the find page
+
+    // <button type="button" class="btn btn-warning btn-sm" id="save-job">
+    // Save
+    // </button>
+    // <br />
 
     $('#all-job-listings').html(results);
 };
@@ -458,6 +460,12 @@ $(function () {
         getAllJobs(displayAllJobs);
     });
 
+    // find.html - get job filtered by region
+    $('#btn-filter-nw, #btn-filter-ne, #btn-filter-se, #btn-filter-sw').click(function () {
+        let buttonValue = $(this).attr('value');
+        getJobsByRegion(buttonValue, displayAllJobs);
+    });
+
     // post.html - submit job post
     $('#form-job-post').submit(function (event) {
         event.preventDefault();
@@ -509,7 +517,7 @@ $(function () {
             },
             success: function (jqXHR) {
                 // localStorage.setItem('authToken', jqXHR.authToken);
-                window.location.href = "post.html";
+                window.location.href = "/post";
             }
         });
     });
