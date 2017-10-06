@@ -46,15 +46,15 @@ const basicStrategy = new BasicStrategy((username, password, callback) => {
     });
 });
 
-passport.serializeUser(function (user, done) {
-  done(null, user);
-});
+// passport.serializeUser(function (user, done) {
+//   done(null, user);
+// });
 
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
-});
+// passport.deserializeUser(function (id, done) {
+//   User.findById(id, function (err, user) {
+//     done(err, user);
+//   });
+// });
 
 const jwtStrategy = new JwtStrategy({
   secretOrKey: JWT_SECRET,

@@ -7,21 +7,27 @@
                             </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
+                {{#if user}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/post" title="post a new job">Post</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/edit" title="edit the jbos you have posted">Edit</a>
+                </li>
+                {{else}}
                 <li class="nav-item">
                     <a class="nav-link" href="/register" title="create an account">Register</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="/login" title="login to your account">Login</a>
+                    <a class="nav-link" href="/auth/login" title="login to your account">Login</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/find" title="browse the jobs that have been posted">Find</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/post" title="post a new job">Post</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/edit" title="edit the jbos you have posted">Edit</a>
-                </li>
+                {{/if}}
             </ul>
         </div>
     </nav>

@@ -1,9 +1,10 @@
 const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const { BasicStrategy } = require('passport-http');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
-const passport = require('passport');
-const { BasicStrategy } = require('passport-http');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -19,7 +20,6 @@ const createAuthToken = user => {
   });
 };
 
-const router = express.Router();
 const { router: authRouter, basicStrategy, jwtStrategy } = require('../auth');
 const { User } = require('../users/models');
 
@@ -28,10 +28,10 @@ const basicAuth = passport.authenticate('basic', { session: false, failWithError
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
 // protected job post route
-router.get('/post', jwtAuth, jsonParser, (req, res) => {
-  // res.sendFile(__dirname + '/public/post.html');
-  res.sendFile(path.join(__dirname, '../public', 'post.html'))
-});
+// router.get('/post', jwtAuth, jsonParser, (req, res) => {
+//   // res.sendFile(__dirname + '/public/post.html');
+//   res.sendFile(path.join(__dirname, '../public', 'post.html'))
+// });
 
 // test login route
 // router.post('/login', passport.authenticate('basic', {
@@ -68,27 +68,86 @@ router.get('/post', jwtAuth, jsonParser, (req, res) => {
 // });
 // -----------------------------------------
 
-
-// test route
-router.post('/login', basicAuth, (req, res) => {
-  // console.log(req.user);
-  const authToken = createAuthToken(req.user.apiRepr());
-  const id = req.user._id;
-  // console.log(authToken);
-  // console.log(id);
-  res.json({ authToken, id });
-  // res.sendFile(path.join(__dirname, '../public', 'find.html'));
-
-  // let localStorage;
-  // try {
-  //   localStorage = window.localStorage;
-  // }
-  // catch (error) {
-  //   console.log("denied.")
-  // };
-  // localStorage.setItem('authToken', authToken);
-  // res.render('find');
+// get login page
+router.get('/login', (req, res) => {
+  console.log("req.user33", req.user);
+  res.render('login', {
+    title: 'Gig Finder | Login',
+    nav: true
+  });
 });
+
+// get job post page
+router.get('/post', (req, res) => {
+  res.render('post', {
+    title: 'Gig Finder | Post',
+    nav: true
+  });
+});
+
+// get job edit page
+router.get('/edit', checkAuth, (req, res) => {
+  res.render('edit', {
+    title: 'Gig Finder | Edit',
+    nav: true
+  });
+});
+
+// test edit
+// router.get('/edit',
+//   passport.authenticate('jwt', { session: false }),
+//   (req, res) => {
+//     res.render('edit', {
+//       title: 'Gig Finder | Edit',
+//       nav: true
+//     });
+//   }
+// );
+
+function checkAuth(req, res, next) {
+  console.log("req.isAuthenticated()", req.isAuthenticated());
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  else {
+    res.redirect('/auth/login');
+  };
+};
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
+
+// login route
+// router.post('/login', basicAuth, (req, res) => {
+//   // console.log(req.user);
+//   const authToken = createAuthToken(req.user.apiRepr());
+//   const id = req.user._id;
+//   // console.log(authToken);
+//   // console.log(id);
+
+//   res.locals.user = req.user;
+//   console.log("res.locals.user: ", res.locals.user);
+//   console.log("isAuth: ", req.isAuthenticated());
+//   res.json({ authToken, id, userObj: res.locals.user });
+//   // res.sendFile(path.join(__dirname, '../public', 'find.html'));
+
+//   // let localStorage;
+//   // try {
+//   //   localStorage = window.localStorage;
+//   // }
+//   // catch (error) {
+//   //   console.log("denied.")
+//   // };
+//   // localStorage.setItem('authToken', authToken);
+//   // res.render('find');
+// });
 
 // test route
 // router.post('/login',
@@ -100,6 +159,20 @@ router.post('/login', basicAuth, (req, res) => {
 //     res.sendFile(path.join(__dirname, '../public', 'find.html'))
 //   }
 // );
+
+
+router.post('/login',
+  // The user provides a username and password to login
+  passport.authenticate('basic', { session: true }),
+  (req, res) => {
+
+    let authToken = createAuthToken(req.user.apiRepr());
+    let id = req.user._id;
+
+    res.json({ authToken, id, userObj: res.locals.user });
+  }
+);
+
 
 
 // router.post('/login',

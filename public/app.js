@@ -1,7 +1,7 @@
 let state = {
     authToken: null,
     userId: null,
-    noLocalStorage: false
+    noSessionStorage: false
 };
 
 // get ONE job post by ID
@@ -56,18 +56,20 @@ function login(callbackFn) {
     const password = formData.find('[name=password]').val().trim();
     const base64encoded = window.btoa(username + ':' + password);
 
-    let localStorage;
+    // let localStorage;
+    let sessionStorage;
     try {
-        localStorage = window.localStorage;
+        // localStorage = window.localStorage;
+        sessionStorage = window.sessionStorage
     } catch (error) {
-        state.noLocalStorage = true;
+        state.noSessionStorage = true;
     };
 
     $.ajax({
         method: 'POST',
         url: '/auth/login',
         beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Basic ' + base64encoded);
+            xhr.setRequestHeader('Authorization', 'basic ' + base64encoded);
         },
         error: function (error) {
             alert("A login error occurred.");
@@ -80,16 +82,23 @@ function login(callbackFn) {
 // save user id and auth token to local storage and app state
 function logUserInfo(data) {
 
-    if (state.noLocalStorage) {
-        console.info("Unable to access local storage");
+    // res.locals.user = req.user;
+
+    // console.log(data);
+    // alert(data);
+
+    if (state.noSessionStorage) {
+        console.info("Unable to access local session storage.");
     }
     else {
-        localStorage.setItem('authToken', data.authToken);
-        localStorage.setItem('userId', data.id);
+        // localStorage.setItem('authToken', data.authToken);
+        // localStorage.setItem('userId', data.id);
+        sessionStorage.setItem('authToken', data.authToken);
+        sessionStorage.setItem('userId', data.id);
     };
 
-    state.userId = data.id;
     state.authToken = data.authToken;
+    state.userId = data.id;
 
     window.location.href = "/find";
 };
@@ -449,7 +458,7 @@ function deleteOneJob() {
 /////////////////////////
 // DOC READY FUNCTIONS
 $(function () {
-    // index.html - login form handler
+    // login.html - login form handler
     $('#form-login').submit(function (event) {
         event.preventDefault();
         login(logUserInfo);
