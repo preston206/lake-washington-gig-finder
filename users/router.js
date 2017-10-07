@@ -64,8 +64,7 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
     },
     password: {
       min: 10,
-      // bcrypt truncates after 72 characters, so let's not give the illusion
-      // of security by storing extra (unused) info
+      // bcrypt truncates after 72 characters
       max: 72
     }
   };
@@ -89,7 +88,6 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
     });
   }
 
-  // let { username, password, firstName = '', lastName = '' } = req.body;
   let { username, password, role } = req.body;
   // Username and password come in pre-trimmed, otherwise we throw an error
   // before this

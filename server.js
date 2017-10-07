@@ -39,7 +39,7 @@ app.use(express.static('public'));
 
 // express session middleware
 app.use(session({
-    secret: 'cats',
+    secret: 'cheeseburger',
     saveUninitialized: true,
     resave: true
 }));
@@ -53,9 +53,7 @@ passport.use(jwtStrategy);
 // global vars
 app.use(function (req, res, next) {
     res.locals.user = req.user || null;
-    console.log("req.user", req.user);
-    console.log("res.locals.user", res.locals.user);
-    // console.log("app.locals.user", app.locals.user);
+    // add flash message variables here
     next();
 });
 
@@ -73,7 +71,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-//  ----- API FOR GETTING INDIVIDUAL PAGES ----- 
+//  ----- APIs FOR GETTING INDIVIDUAL PAGES ----- 
 // get index
 app.get('/', (req, res) => {
     res.render('index', {
@@ -90,22 +88,6 @@ app.get('/find', (req, res) => {
     });
 });
 
-// // get job post page
-// app.get('/post', checkAuth, (req, res) => {
-//     res.render('post', {
-//         title: 'Gig Finder | Post',
-//         nav: true
-//     });
-// });
-
-// // get job edit page
-// app.get('/edit', checkAuth, (req, res) => {
-//     res.render('edit', {
-//         title: 'Gig Finder | Edit',
-//         nav: true
-//     });
-// });
-
 // // get registration page
 app.get('/register', (req, res) => {
     res.render('register', {
@@ -114,24 +96,14 @@ app.get('/register', (req, res) => {
     });
 });
 
-// get login page
-// app.get('/login', (req, res) => {
-//     console.log("req.user3", req.user);
-//     res.render('login', {
-//         title: 'Gig Finder | Login',
-//         nav: true
-//     });
-// });
-
 // 9/25/17 added removeHeader to fix dialog box popup when
 // passport sends back 401
 app.use(function (err, req, res, next) {
-    console.log("req.user4", req.user);
     res.removeHeader('www-authenticate');
     next(err);
 });
 
-// A protected endpoint which needs a valid JWT to access it
+// A protected endpoint or testing JWT access
 // app.get('/protected',
 //     passport.authenticate('jwt', { session: false }),
 //     (req, res) => {

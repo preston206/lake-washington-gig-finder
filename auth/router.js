@@ -70,7 +70,6 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 
 // get login page
 router.get('/login', (req, res) => {
-  console.log("req.user33", req.user);
   res.render('login', {
     title: 'Gig Finder | Login',
     nav: true
@@ -78,7 +77,7 @@ router.get('/login', (req, res) => {
 });
 
 // get job post page
-router.get('/post', (req, res) => {
+router.get('/post', authCheck, (req, res) => {
   res.render('post', {
     title: 'Gig Finder | Post',
     nav: true
@@ -86,7 +85,7 @@ router.get('/post', (req, res) => {
 });
 
 // get job edit page
-router.get('/edit', checkAuth, (req, res) => {
+router.get('/edit', authCheck, (req, res) => {
   res.render('edit', {
     title: 'Gig Finder | Edit',
     nav: true
@@ -104,8 +103,7 @@ router.get('/edit', checkAuth, (req, res) => {
 //   }
 // );
 
-function checkAuth(req, res, next) {
-  console.log("req.isAuthenticated()", req.isAuthenticated());
+function authCheck(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
