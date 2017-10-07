@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const hbs = require('express-handlebars');
 const session = require('express-session');
@@ -39,9 +38,7 @@ app.use(express.static('public'));
 
 // express session middleware
 app.use(session({
-    secret: 'cheeseburger',
-    saveUninitialized: true,
-    resave: true
+    secret: 'cheeseburger'
 }));
 
 // passport init

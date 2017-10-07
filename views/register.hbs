@@ -1,30 +1,31 @@
 <main>
 
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
             <div class="col-4">
 
                 <!-- user registration form -->
                 <form id="form-register" method="POST" action="/users/register">
                     <div class="form-group">
                         <fieldset>
-                            <legend>Register</legend>
-                            <label for="register-username">Username</label>
-                            <input type="email" class="form-control" id="register-username" aria-describedby="registerUsernameHelp" name="username" placeholder="email@domain.com"
+                            <legend class="text-light">Register</legend>
+                            <label for="register-username" class="text-light">Username</label>
+                            {{!-- change username back to email type --}}
+                            <input type="text" class="form-control" id="register-username" aria-describedby="registerUsernameHelp" name="username" placeholder="email@domain.com"
                                 required />
                             <small id="registerUsernameHelp" class="form-text text-muted">Your username will be your email address.</small>
                     </div>
                     <div class="form-group">
-                        <label for="register-password">Password</label>
+                        <label for="register-password" class="text-light">Password</label>
                         <input type="password" class="form-control" id="register-password" name="password" required />
                     </div>
                     <div class="form-group">
-                        <label for="register-role">Role</label>
+                        <label for="register-role" class="text-light">Role</label>
                         <Select class="form-control" id="register-role" name="role" aria-describedby="registerRoleHelp" required>
-                        <option></option>
-                        <option>Job Seeker</option>
-                        <option>Company</option>
-                    </Select>
+                            <option></option>
+                            <option>Job Seeker</option>
+                            <option>Company</option>
+                        </Select>
                         <small id="registerRoleHelp" class="form-text text-muted">Are you seeking or posting?</small>
                     </div>
                     <div class="form-group">

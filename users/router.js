@@ -63,7 +63,7 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
       min: 1
     },
     password: {
-      min: 10,
+      min: 8,
       // bcrypt truncates after 72 characters
       max: 72
     }
@@ -89,20 +89,13 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
   }
 
   let { username, password, role } = req.body;
-  // Username and password come in pre-trimmed, otherwise we throw an error
-  // before this
-  // firstName = firstName.trim();
-  // lastName = lastName.trim();
-
-  // creating api token
-  // let apiToken = null;
 
   return User
     .find({ username })
     .count()
     .then(count => {
       if (count > 0) {
-        // There is an existing user with the same username
+        // check for existing user with the same username
         return Promise.reject({
           code: 422,
           reason: 'ValidationError',
@@ -110,7 +103,7 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
           location: 'username'
         });
       }
-      // If there is no existing user, hash the password
+      // if username doesnt exist, hash the password
       return User.hashPassword(password)
     })
     .then(hash => {
@@ -122,7 +115,11 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
         })
     })
     .then(user => {
-      return res.status(201).json(user.apiRepr());
+      // return res.status(201).json(user.apiRepr());
+      res.render('login', {
+        title: 'Gig Finder | Login',
+        nav: true
+      });
     })
     .catch(err => {
       // Forward validation errors on to the client, otherwise give a 500

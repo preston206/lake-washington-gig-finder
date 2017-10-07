@@ -46,7 +46,7 @@ UserSchema.methods.validatePassword = function (password) {
 
 UserSchema.statics.hashPassword = function (password) {
   console.log("password has been hashed.");
-  return bcrypt.hash(password, 10);
+  return bcrypt.hash(password, 8);
 }
 
 const User = mongoose.model('User', UserSchema);

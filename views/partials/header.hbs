@@ -3,8 +3,8 @@
         <a class="navbar-brand" href="#">Gig Finder</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
             aria-expanded="false" aria-label="Toggle navigation">
-                              <span class="navbar-toggler-icon"></span>
-                            </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 {{#if user}}
@@ -13,7 +13,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/auth/edit" title="edit the jbos you have posted">Edit</a>
+                    <a class="nav-link" href="/auth/edit" title="edit the jobs you have posted">Edit</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout" title="logout">Logout</a>
                 </li>
                 {{else}}
                 <li class="nav-item">
