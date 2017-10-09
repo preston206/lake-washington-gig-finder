@@ -38,7 +38,9 @@ app.use(express.static('public'));
 
 // express session middleware
 app.use(session({
-    secret: 'cheeseburger'
+    secret: 'cheeseburger',
+    resave: false,
+    saveUninitialized: false
 }));
 
 // passport init
