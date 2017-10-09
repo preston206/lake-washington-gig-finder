@@ -77,7 +77,7 @@ router.get('/login', (req, res) => {
 });
 
 // get job post page
-router.get('/post', authCheck, (req, res) => {
+router.get('/post', authCheck, roleCheck, (req, res) => {
   res.render('post', {
     title: 'Gig Finder | Post',
     nav: true
@@ -85,12 +85,13 @@ router.get('/post', authCheck, (req, res) => {
 });
 
 // get job edit page
-router.get('/edit', authCheck, (req, res) => {
+router.get('/edit', authCheck, roleCheck, (req, res) => {
   res.render('edit', {
     title: 'Gig Finder | Edit',
     nav: true
   });
 });
+
 
 // test edit
 // router.get('/edit',
@@ -103,12 +104,31 @@ router.get('/edit', authCheck, (req, res) => {
 //   }
 // );
 
+// auth check to see if user has been authenticated
+// if user has not been authed then redirect to login
 function authCheck(req, res, next) {
   if (req.isAuthenticated()) {
+    // console.log( req.user.role );
     return next();
   }
   else {
-    res.redirect('/auth/login');
+    // console.log({ req });
+    res.redirect('login');
+  };
+};
+
+// role check to see if user is "company"
+// if not then redirect to registration
+// user needs to be registered as a company in order to post job
+function roleCheck(req, res, next) {
+  // console.log(req.user.role);
+  if (req.user.role === "Company") {
+    // console.log({ req });
+    return next();
+  }
+  else {
+    // console.log({ req });
+    res.redirect('../register');
   };
 };
 
@@ -158,7 +178,7 @@ passport.deserializeUser(function (id, done) {
 //   }
 // );
 
-
+// login
 router.post('/login',
   // The user provides a username and password to login
   passport.authenticate('basic', { session: true }),
@@ -171,7 +191,11 @@ router.post('/login',
   }
 );
 
-
+// logout
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('login');
+});
 
 // router.post('/login',
 //   // The user provides a username and password to login
