@@ -17,7 +17,19 @@
 </head>
 
 <body>
-    {{#if nav}} {{> header}} {{/if}} {{{ body }}}
+    {{#if nav}}
+        {{> header}}
+    {{/if}} 
+    
+    {{#if info_msg}}
+        <div class="alert alert-warning text-center font-weight-bold">{{info_msg}}</div>
+    {{/if}}
+
+    {{#if success_msg}}
+        <div class="alert alert-success text-center font-weight-bold">{{success_msg}}</div>
+    {{/if}}
+
+    {{{ body }}}
 </body>
 
 </html>

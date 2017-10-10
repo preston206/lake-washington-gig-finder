@@ -113,6 +113,7 @@ function authCheck(req, res, next) {
   }
   else {
     // console.log({ req });
+    req.flash('info_msg', 'You need to log in before you can post a job.');
     res.redirect('login');
   };
 };
@@ -128,6 +129,7 @@ function roleCheck(req, res, next) {
   }
   else {
     // console.log({ req });
+    req.flash('info_msg', 'You need to register as a company before you can post or edit a job.');
     res.redirect('../register');
   };
 };
@@ -194,6 +196,7 @@ router.post('/login',
 // logout
 router.get('/logout', (req, res) => {
   req.logout();
+  req.flash('success_msg', 'You have successfully logged out.');
   res.redirect('login');
 });
 

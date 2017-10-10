@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const hbs = require('express-handlebars');
+const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const mongoose = require('mongoose');
@@ -49,10 +50,14 @@ app.use(passport.session());
 passport.use(basicStrategy);
 passport.use(jwtStrategy);
 
+// Connect Flash
+app.use(flash());
+
 // global vars
 app.use(function (req, res, next) {
     res.locals.user = req.user || null;
-    // add flash message variables here
+    res.locals.info_msg = req.flash('info_msg');
+    res.locals.success_msg = req.flash('success_msg');
     next();
 });
 
