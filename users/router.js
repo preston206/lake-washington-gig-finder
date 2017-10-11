@@ -116,10 +116,12 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
     })
     .then(user => {
       // return res.status(201).json(user.apiRepr());
-      res.render('login', {
-        title: 'Gig Finder | Login',
-        nav: true
-      });
+      req.flash('success_msg', 'You have successfully registered. You can login now.');
+      res.redirect('../auth/login');
+      // res.render('login', {
+      //   title: 'Gig Finder | Login',
+      //   nav: true
+      // });
     })
     .catch(err => {
       // Forward validation errors on to the client, otherwise give a 500
