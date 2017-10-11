@@ -4,27 +4,28 @@
 
     <!-- TODO: switch username field back to email type -->
 
+
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-4">
+            <div class="col-lg-6">
 
-                <!-- job edit form -->
-                <form id="form-login" method="POST" action="/auth/login">
+                <!-- login form -->
+                <form id="form-login" class="border pt-3 pb-3 px-5" method="POST" action="/auth/login">
                     <div class="form-group">
                         <fieldset>
-                            <legend class="text-light">Login</legend>
-                            <label for="login-username" class="text-light">Username</label>
+                            <legend class="text-light display-4 mb-5">Login</legend>
+                            <label for="login-username" class="text-light font-1-3-em">Username</label>
                             <input type="text" class="form-control" id="login-username" aria-describedby="loginUsernameHelp" name="username" placeholder="email@domain.com"
                                 required/>
-                            <small id="loginUsernameHelp" class="form-text text-muted">Your username is the email address that you registered with.</small>
+                            <span id="loginUsernameHelp" class="form-text font-0-8-em text-muted">Your username is the email address that you registered with.</span>
                     </div>
 
                     <div class="form-group">
-                        <label for="login-password" class="text-light">Password</label>
+                        <label for="login-password" class="text-light font-1-3-em">Password</label>
                         <input type="password" class="form-control" id="login-password" name="password" required/>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mt-5">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
 

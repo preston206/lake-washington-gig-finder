@@ -8,6 +8,39 @@ body {
     font-size: 13px;
 }
 
+.font-1-3-em {
+    font-size: 1.3em;
+}
+
+.font-0-8-em {
+    font-size: 0.8em
+}
+
+
+/* header and navbar */
+
+.navbar {
+    min-height: 90px;
+}
+
+.navbar-brand {
+    padding: 0 60px 0 0;
+    font-size: 2.4em;
+}
+
+.nav-link {
+    font-size: 1.3em;
+}
+
+
+/* login and register forms */
+
+#form-login, #form-register {
+    /* margin-top: 130px; */
+    margin-top: 21%;
+    box-shadow: 10px 10px 5px black;
+}
+
 
 /* index.html */
 
@@ -80,3 +113,21 @@ body {
     height: 400px;
     resize: none;
 }
+
+
+/* media queries */
+
+@media only screen and (max-width: 768px) {
+    #form-login, #form-register {
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+}
+
+
+/* @media only screen and (max-width: 415px) {
+    #form-login, #form-register {
+        width: 100%;
+        margin-top: 50px;
+    }
+} */

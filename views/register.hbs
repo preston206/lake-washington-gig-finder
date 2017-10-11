@@ -1,34 +1,41 @@
 <main>
 
+
+
+    <!-- TODO: switch username field back to email type -->
+
+
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-4">
+            <div class="col-lg-6">
 
                 <!-- user registration form -->
-                <form id="form-register" method="POST" action="/users/register">
+                <form id="form-register" class="border pt-3 pb-3 px-5" method="POST" action="/users/register">
                     <div class="form-group">
                         <fieldset>
-                            <legend class="text-light">Register</legend>
-                            <label for="register-username" class="text-light">Username</label>
-                            {{!-- change username back to email type --}}
+                            <legend class="text-light display-4 mb-5">Register</legend>
+                            <label for="register-username" class="text-light font-1-3-em">Username</label>
                             <input type="text" class="form-control" id="register-username" aria-describedby="registerUsernameHelp" name="username" placeholder="email@domain.com"
                                 required />
-                            <small id="registerUsernameHelp" class="form-text text-muted">Your username will be your email address.</small>
+                            <span id="registerUsernameHelp" class="form-text font-0-8-em text-muted">Your username will be your email address.</span>
                     </div>
+
                     <div class="form-group">
-                        <label for="register-password" class="text-light">Password</label>
+                        <label for="register-password" class="text-light font-1-3-em">Password</label>
                         <input type="password" class="form-control" id="register-password" name="password" required />
                     </div>
+
                     <div class="form-group">
-                        <label for="register-role" class="text-light">Role</label>
+                        <label for="register-role" class="text-light font-1-3-em">Role</label>
                         <Select class="form-control" id="register-role" name="role" aria-describedby="registerRoleHelp" required>
                             <option></option>
                             <option>Job Seeker</option>
                             <option>Company</option>
                         </Select>
-                        <small id="registerRoleHelp" class="form-text text-muted">Are you seeking or posting?</small>
+                        <span id="registerRoleHelp" class="form-text font-0-8-em text-muted">Are you seeking or posting?</span>
                     </div>
-                    <div class="form-group">
+
+                    <div class="form-group mt-5">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
 
