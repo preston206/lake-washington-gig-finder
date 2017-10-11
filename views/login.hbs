@@ -11,29 +11,31 @@
 
                 <!-- login form -->
                 <form id="form-login" class="border pt-3 pb-3 px-5" method="POST" action="/auth/login">
-                    <div class="form-group">
-                        <fieldset>
-                            <legend class="text-light display-4 mb-5">Login</legend>
-                            <label for="login-username" class="text-light font-1-3-em">Username</label>
+                    <fieldset class="form-group">
+
+                        <legend class="text-light display-4 mb-5">Login</legend>
+
+                        <label for="login-username" class="text-light font-1-3-em">Username</label>
+                        <div class="input-group input-group-lg">
                             <input type="text" class="form-control" id="login-username" aria-describedby="loginUsernameHelp" name="username" placeholder="email@domain.com"
-                                required/>
-                            <span id="loginUsernameHelp" class="form-text font-0-8-em text-muted">Your username is the email address that you registered with.</span>
-                    </div>
+                                title="enter the email address you registered with" autofocus required/>
+                        </div>
+                        <span id="loginUsernameHelp" class="form-text font-0-8-em text-muted">Your username is the email address that you registered with.</span>
 
-                    <div class="form-group">
-                        <label for="login-password" class="text-light font-1-3-em">Password</label>
-                        <input type="password" class="form-control" id="login-password" name="password" required/>
-                    </div>
+                        <label for="login-password" class="text-light mt-5 font-1-3-em">Password</label>
+                        <div class="input-group input-group-lg">
+                            <input type="password" class="form-control" id="login-password" name="password" title="enter your password" required/>
+                        </div>
 
-                    <div class="form-group mt-5">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
+                        <div class="form-group mt-5">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
 
-                    <div class="form-group">
-                        <a href="/register" title="create an account">
-                            <u>Have you registered an account yet?</u>
-                        </a>
-                    </div>
+                        <div class="form-group">
+                            <a href="/register" title="create an account">
+                                <u>Have you registered an account yet?</u>
+                            </a>
+                        </div>
 
                     </fieldset>
                 </form>

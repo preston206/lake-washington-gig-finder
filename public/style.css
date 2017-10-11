@@ -8,12 +8,28 @@ body {
     font-size: 13px;
 }
 
+.font-0-8-em {
+    font-size: 0.8em
+}
+
 .font-1-3-em {
     font-size: 1.3em;
 }
 
-.font-0-8-em {
-    font-size: 0.8em
+.font-1-5-em {
+    font-size: 1.5em
+}
+
+.font-2-2-em {
+    font-size: 2.2em
+}
+
+.margin-top-2 {
+    margin-top: 2%;
+}
+
+.margin-top-4 {
+    margin-top: 4%;
 }
 
 
@@ -37,7 +53,7 @@ body {
 
 #form-login, #form-register {
     /* margin-top: 130px; */
-    margin-top: 21%;
+    margin-top: 8%;
     box-shadow: 10px 10px 5px black;
 }
 
@@ -92,8 +108,9 @@ body {
 
 /* edit.html */
 
-#checkbox-delete {
-    margin-right: 350px;
+#btn-delete-job-post {
+    /* margin-left: 325px; */
+    margin-left: 61%;
 }
 
 #edit-job-list {
@@ -122,12 +139,10 @@ body {
         margin-top: 10%;
         margin-bottom: 10%;
     }
-}
-
-
-/* @media only screen and (max-width: 415px) {
-    #form-login, #form-register {
-        width: 100%;
-        margin-top: 50px;
+    .font-1-5-em {
+        font-size: 1em
     }
-} */
+    .font-2-2-em {
+        font-size: 1.7em
+    }
+}

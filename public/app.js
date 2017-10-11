@@ -276,7 +276,7 @@ function postJob() {
         email: $('#post-email').val(),
         technologies: technologies,
         description: $('#post-description').val(),
-        postedBy: localStorage.userId || state.userId
+        postedBy: sessionStorage.userId || state.userId
     };
 
     $.ajax({
@@ -298,7 +298,7 @@ function displayJobsToEdit(data) {
     let results = [];
 
     if (data.length === 0) {
-        $('#edit-job-list').html("You haven't posted any jobs yet.");
+        $('#edit-job-list').html("<p class='text-center text-primary font-weight-bold pt-5'>You haven't posted any jobs yet.</p>");
     }
     else {
 

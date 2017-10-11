@@ -1,24 +1,24 @@
 <main>
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-5">
 
-            <div class="col-12">
-                <h1 class="text-light font-weight-bold text-center">
-                    These are the jobs you have posted.
-                </h1>
-                <h2 class="text-light font-weight-bold text-center">
+            <div class="col-lg-12 margin-top-2">
+                <p class="text-light text-center font-2-2-em">
+                    These are the jobs you have posted
+                </p>
+                <p class="text-light text-center font-1-5-em">
                     To edit, click on one of the job posts. To delete, scroll to the bottom of the job post.
-                </h2>
+                </p>
             </div>
 
             <!-- empty single column for spacing -->
-            <div class="col-1"></div>
+            <div class="col-lg-1"></div>
 
             <!-- list of jobs get inserted here -->
-            <div id="edit-job-list" class="bg-light col-4">
+            <div id="edit-job-list" class="bg-light col-lg-4">
             </div>
 
-            <div class="col-6" id="formDiv">
+            <div class="col-lg-6" id="formDiv">
                 <!-- job edit form -->
                 <form id="form-job-edit" class="bg-light p-2" method="#" action="#">
 
@@ -93,13 +93,19 @@
                     <div class="form-group">
                         <!-- submit job update to PUT endpoint -->
                         <button type="submit" class="btn btn-primary" id="btn-update-job-post" disabled>Submit</button>
+                    </div>
 
-                        <div class="mt-5 border border-danger p-4">
+                    <div class="form-group mt-5 border border-danger p-4 justify-content-center bg-secondary">
+                        <div class="col-lg-8 mx-auto">
                             <span class="form-text text-dark font-weight-bold">To delete
-                                <i>this</i> job post, check the box and click the button.</span>
-                            <label class="form-check-label" for="#">
-                                <input class="form-check-input disabled-input" type="checkbox" id="checkbox-delete" disabled />
+                                <i>this</i> job post, check the box and click the button.
+                            </span>
+
+                            <label class="form-check-label custom-control custom-checkbox" />
+                            <input type="checkbox" class="custom-control-input disabled-input" disabled/>
+                            <span class="custom-control-indicator"></span>
                             </label>
+
                             <button type="button" class="btn btn-dark" id="btn-delete-job-post" disabled>Delete</button>
                         </div>
                     </div>
@@ -108,12 +114,10 @@
             </div>
 
             <!-- empty single column for spacing -->
-            <div class="col-1"></div>
+            <div class="col-lg-1"></div>
 
         </div>
     </div>
-
-
 </main>
 
 <script src="/app.js"></script>
