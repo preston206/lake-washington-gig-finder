@@ -79,7 +79,7 @@ function login(callbackFn) {
     });
 };
 
-// save user id and auth token to local storage and app state
+// save user id and auth token to session storage and app state
 function logUserInfo(data) {
 
     // res.locals.user = req.user;
@@ -285,7 +285,7 @@ function postJob() {
         data: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
         success: function () {
-            console.info("job has been posted.");
+            // console.info("job has been posted.");
             window.location.reload(true);
         }
     });

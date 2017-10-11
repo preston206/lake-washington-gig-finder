@@ -57,6 +57,7 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
             postedBy
         })
         .then(job => {
+            req.flash('success_msg', 'Your job description has been posted.');
             return res.status(201).json({
                 message: "Job has been posted.",
                 data: job.apiRepr()
@@ -68,8 +69,6 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
             });
         });
 });
-
-
 
 
 // copy of job post code
@@ -87,6 +86,32 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
 // .then(job => {
 //     res.status(201);
 //     res.render('test');
+// })
+// .catch(error => {
+//     return res.status(500).json({
+//         message: "Internal Server Error."
+//     });
+// });
+
+
+// copy of job post code
+// return Job
+// .create({
+//     company,
+//     title,
+//     salary,
+//     region,
+//     city,
+//     email,
+//     technologies,
+//     description,
+//     postedBy
+// })
+// .then(job => {
+//     return res.status(201).json({
+//         message: "Job has been posted.",
+//         data: job.apiRepr()
+//     });
 // })
 // .catch(error => {
 //     return res.status(500).json({
@@ -220,11 +245,5 @@ router.delete('/delete/:id', (req, res) => {
             message: "Internal Server Error."
         }));
 });
-
-// TODO create some middleware to auth for job update, del, post
-function authorizeJobTask() {
-    // code
-};
-
 
 module.exports = { router };
