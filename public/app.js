@@ -17,7 +17,7 @@ function getOneJob(id, callbackFn) {
 // get jobs by user ID
 function getJobsByUserId(callbackFn) {
 
-    let id = localStorage.userId || state.userId;
+    let id = sessionStorage.userId || state.userId;
     let url = "http://localhost:8080/jobs/getmyjobs/" + id;
 
     $.ajax({
@@ -56,10 +56,10 @@ function login(callbackFn) {
     const password = formData.find('[name=password]').val().trim();
     const base64encoded = window.btoa(username + ':' + password);
 
-    // let localStorage;
+    // let sessionStorage;
     let sessionStorage;
     try {
-        // localStorage = window.localStorage;
+        // sessionStorage = window.sessionStorage;
         sessionStorage = window.sessionStorage
     } catch (error) {
         state.noSessionStorage = true;
@@ -91,8 +91,8 @@ function logUserInfo(data) {
         console.info("Unable to access local session storage.");
     }
     else {
-        // localStorage.setItem('authToken', data.authToken);
-        // localStorage.setItem('userId', data.id);
+        // sessionStorage.setItem('authToken', data.authToken);
+        // sessionStorage.setItem('userId', data.id);
         sessionStorage.setItem('authToken', data.authToken);
         sessionStorage.setItem('userId', data.id);
     };
@@ -511,7 +511,7 @@ $(function () {
     $('#btn-goToPost').click(function (event) {
         event.preventDefault();
 
-        let postAuthToken = localStorage.getItem('authToken');
+        let postAuthToken = sessionStorage.getItem('authToken');
         console.log(postAuthToken);
 
         $.ajax({
@@ -525,7 +525,7 @@ $(function () {
                 console.log(error);
             },
             success: function (jqXHR) {
-                // localStorage.setItem('authToken', jqXHR.authToken);
+                // sessionStorage.setItem('authToken', jqXHR.authToken);
                 window.location.href = "/post";
             }
         });
