@@ -223,6 +223,7 @@ router.put('/update/:id', jsonParser, urlencodedParser, (request, response) => {
         .findByIdAndUpdate(request.params.id, { $set: jobFieldsToUpdate }, { new: true })
         .exec()
         .then(job => {
+            request.flash('success_msg', 'Job post has been updated.');
             return response.status(201).json({
                 message: "job has been updated.",
                 data: job.apiRepr()

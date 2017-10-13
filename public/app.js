@@ -423,7 +423,7 @@ function updateJob() {
         data: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
         success: function () {
-            console.info("job has been updated.");
+            // console.info("job has been updated.");
             window.location.reload(true);
         }
     });
