@@ -241,7 +241,12 @@ router.delete('/delete/:id', (req, res) => {
     return Job
         .findByIdAndRemove(req.params.id)
         .exec()
-        .then(res.status(204).end())
+        .then(job => {
+            req.flash('success_msg', 'Job post has been deleted.');
+            return res.status(204).json({
+                message: "job has been deleted."
+            });
+        })
         .catch(error => res.status(500).json({
             message: "Internal Server Error."
         }));
