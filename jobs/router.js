@@ -224,7 +224,7 @@ router.put('/update/:id', jsonParser, urlencodedParser, (request, response) => {
         .exec()
         .then(job => {
             request.flash('success_msg', 'Job post has been updated.');
-            return response.status(201).json({
+            return response.status(204).json({
                 message: "job has been updated.",
                 data: job.apiRepr()
             });
