@@ -40,7 +40,7 @@ function getJobsByRegion(region, callbackFn) {
 // get ALL job posts
 function getAllJobs(callbackFn) {
 
-    let url = "http://localhost:8080/jobs/"
+    let url = "https://localhost:8080/jobs/"
 
     $.ajax({
         url: url,
@@ -255,7 +255,7 @@ function displayAllJobs(data) {
 // POST PAGE
 // send job data to jobs POST endpoint
 function postJob() {
-    let url = "http://localhost:8080/jobs/post/";
+    let url = "https://localhost:8080/jobs/post/";
 
     let technologies = $('#post-technologies').val();
 
