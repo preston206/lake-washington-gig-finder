@@ -6,7 +6,7 @@ let state = {
 
 // get ONE job post by ID
 function getOneJob(id, callbackFn) {
-    let url = "http://localhost:8080/jobs/getone/" + id;
+    let url = "/jobs/getone/" + id;
 
     $.ajax({
         url: url,
@@ -18,7 +18,7 @@ function getOneJob(id, callbackFn) {
 function getJobsByUserId(callbackFn) {
 
     let id = sessionStorage.userId || state.userId;
-    let url = "http://localhost:8080/jobs/getmyjobs/" + id;
+    let url = "/jobs/getmyjobs/" + id;
 
     $.ajax({
         url: url,
@@ -29,7 +29,7 @@ function getJobsByUserId(callbackFn) {
 // get jobs by region
 function getJobsByRegion(region, callbackFn) {
 
-    let url = "http://localhost:8080/jobs/region/" + region;
+    let url = "/jobs/region/" + region;
 
     $.ajax({
         url: url,
@@ -40,7 +40,7 @@ function getJobsByRegion(region, callbackFn) {
 // get ALL job posts
 function getAllJobs(callbackFn) {
 
-    let url = "https://localhost:8080/jobs/"
+    let url = "/jobs/"
 
     $.ajax({
         url: url,
@@ -255,7 +255,7 @@ function displayAllJobs(data) {
 // POST PAGE
 // send job data to jobs POST endpoint
 function postJob() {
-    let url = "https://localhost:8080/jobs/post/";
+    let url = "/jobs/post/";
 
     let technologies = $('#post-technologies').val();
 
@@ -393,7 +393,7 @@ function populateEditPageFields(data) {
 // send updated job data to jobs PUT endpoint
 function updateJob() {
     let id = $('#edit-job-id').val();
-    let url = "http://localhost:8080/jobs/update/" + id;
+    let url = "/jobs/update/" + id;
 
     let technologies = $('#edit-technologies').val();
 
@@ -437,7 +437,7 @@ function deleteOneJob() {
 
     if (confirmMsg === true) {
 
-        let url = "http://localhost:8080/jobs/delete/" + id;
+        let url = "/jobs/delete/" + id;
 
         $.ajax({
             url: url,
