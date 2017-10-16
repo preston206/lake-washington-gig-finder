@@ -24,8 +24,9 @@ const { router: authRouter, basicStrategy, jwtStrategy } = require('../auth');
 const { User } = require('../users/models');
 
 // 9/25/17 added failWithError to fix dialog box popup when passport sends back 401
-const basicAuth = passport.authenticate('basic', { session: false, failWithError: true });
-const jwtAuth = passport.authenticate('jwt', { session: false });
+const basicAuth = passport.authenticate('basic', { session: true, failWithError: true });
+// const basicAuth = passport.authenticate('basic', { session: true });
+const jwtAuth = passport.authenticate('jwt', { session: true });
 
 // protected job post route
 // router.get('/post', jwtAuth, jsonParser, (req, res) => {
@@ -181,16 +182,25 @@ passport.deserializeUser(function (id, done) {
 // );
 
 // login
-router.post('/login',
-  // The user provides a username and password to login
-  passport.authenticate('basic', { session: true }),
-  (req, res) => {
+// router.post('/login',
+//   // The user provides a username and password to login
+//   passport.authenticate('basic', { session: true }),
+//   (req, res) => {
 
-    let authToken = createAuthToken(req.user.apiRepr());
-    let id = req.user._id;
+//     let authToken = createAuthToken(req.user.apiRepr());
+//     let id = req.user._id;
 
-    res.json({ authToken, id, userObj: res.locals.user });
-  }
+//     res.json({ authToken, id, userObj: res.locals.user });
+//   }
+// );
+
+router.post('/login', basicAuth, (req, res) => {
+
+  let authToken = createAuthToken(req.user.apiRepr());
+  let id = req.user._id;
+
+  res.json({ authToken, id, userObj: res.locals.user });
+}
 );
 
 // logout

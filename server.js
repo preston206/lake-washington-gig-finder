@@ -102,10 +102,10 @@ app.get('/register', (req, res) => {
 
 // 9/25/17 added removeHeader to fix dialog box popup when
 // passport sends back 401
-app.use(function (err, req, res, next) {
-    res.removeHeader('www-authenticate');
-    next(err);
-});
+// app.use(function (err, req, res, next) {
+//     res.removeHeader('www-authenticate');
+//     next(err);
+// });
 
 // A protected endpoint or testing JWT access
 // app.get('/protected',
