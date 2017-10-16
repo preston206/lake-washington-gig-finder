@@ -32,6 +32,17 @@ body {
     margin-top: 4%;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.font-black {
+    color: #111;
+}
 
 /* header and navbar */
 
@@ -62,6 +73,14 @@ body {
 
 .index-background {
     background-color: #2e2e2e;
+}
+
+#effect {
+    position: relative;
+}
+
+#thinkfulDropdown:hover {
+    cursor: pointer;
 }
 
 

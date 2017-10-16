@@ -125,9 +125,17 @@ app.use('/jobs/', jobsRouter);
 // server start and stop functions
 let server;
 
-function runServer() {
+// create a paramater to pass a database URL to
+// that way, this function can be used to prod and test
+// for mocha tests just pass the TEST_DATABASE_URL config variable to it
+// this can actually wipe the production db if not careful
+// I previously had this function hard coded to connect to the prod db
+// but I set my mocha tests to the test db, and it didnt matter
+// this runServer function still connected to the prod db and wiped it
+// when my tests ran the drop db function
+function runServer(db) {
     return new Promise((resolve, reject) => {
-        mongoose.connect(DATABASE_URL, err => {
+        mongoose.connect(db, err => {
             useMongoClient: true;
             if (err) {
                 return reject(err);
@@ -139,7 +147,7 @@ function runServer() {
                     ":" + (dateTime.getMinutes() < 10 ? '0' : '') +
                     dateTime.getMinutes();
 
-                console.log(hourMinute + ` - I'm listening on ${PORT}...`);
+                console.log(hourMinute + ` - listening on ${PORT}...`);
 
                 resolve();
             })
@@ -165,8 +173,9 @@ function closeServer() {
     });
 }
 
+// pass it the databast variable from config- the prod db
 if (require.main === module) {
-    runServer().catch(err => console.error(err));
+    runServer(DATABASE_URL).catch(err => console.error(err));
 };
 
 module.exports = { app, runServer, closeServer };

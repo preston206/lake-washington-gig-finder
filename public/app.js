@@ -4,6 +4,18 @@ let state = {
     noSessionStorage: false
 };
 
+
+
+// ----- NOTE: if deploying to Heroku, dont use http://localhost:8080 -----
+// Heroku uses its own ports internally and hard coding the port in the
+// AJAX calls can cause Heroku to fail because it tries to connect to 8080
+// but internally Heroku has configured the app to use a different port
+// Also, dont use http either; just use the endpoint on its own and thats it
+// E.G. /jobs/getmyjobs/
+
+
+
+
 // get ONE job post by ID
 function getOneJob(id, callbackFn) {
     let url = "/jobs/getone/" + id;

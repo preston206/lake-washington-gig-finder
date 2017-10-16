@@ -12,7 +12,68 @@
                     <button class="btn btn-outline-dark btn-lg" onclick="window.location.href = '/auth/post'">Post a job</button>
                 </div>
             </div>
-            <br /><br />
         </div>
     </div>
+
+    <div class="container pt-4">
+        <div id="thinkfulDropdown" class="mb-0 text-light text-center col-6 mx-auto" title="instructions for Thinkful staff">
+            <div class="border border-secondary border-top-0 border-left-0 border-right-0">
+                <span class="font-1-5-em p-2">
+                    Thinkful?
+                </span>
+            </div>
+        </div>
+
+        <div class="toggler font-black col-6 mx-auto">
+            <div id="effect" class="px-3 py-2">
+
+                <p>
+                    Gig Finder is a localized job site for developers in the Seattle metro area.
+                </p>
+
+                <ul>
+                    <li>A "Job Seeker" can only browse jobs.</li>
+                    <li>A "Company" can browse, post, edit, and delete job posts.</li>
+                </ul>
+
+                <p>
+                    DEMO LOGINS:
+                    <br />
+
+                    <u>Job Seeker</u>
+                    <br /> u: batman
+                    <br /> p: pizza123
+                    <br />
+
+                    <br />
+                    <u>Company</u>
+                    <br /> u: spiderman
+                    <br /> p: pizza123
+                </p>
+
+            </div>
+        </div>
+    </div>
+
 </main>
+
+<script>
+    $(function () {
+
+        $("#effect").hide();
+
+        $('.toggler').removeClass('font-black');
+        $('#effect').addClass('border');
+        $('#effect').addClass('border-secondary');
+        $('#effect').addClass('text-light');
+
+        function runEffect() {
+            $("#effect").toggle("blind", 1000);
+        };
+
+        $("#thinkfulDropdown").on("click", function () {
+            runEffect();
+        });
+
+    });
+</script>
