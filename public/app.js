@@ -444,10 +444,11 @@ function deleteOneJob() {
             method: "DELETE",
             success: function () {
                 console.info("Job has been deleted.");
+                window.location.reload(true);
             }
         });
 
-        window.location.reload(true);
+        // window.location.reload(true);
     }
     else {
         return;
