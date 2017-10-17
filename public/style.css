@@ -32,6 +32,10 @@ body {
     margin-top: 4%;
 }
 
+.margin-bottom-2 {
+    margin-bottom: 10%
+}
+
 button:hover {
     cursor: pointer;
 }
@@ -45,7 +49,7 @@ button:hover {
 }
 
 
-/* header and navbar */
+/* header, navbar, and footer */
 
 .navbar {
     min-height: 90px;
@@ -60,21 +64,25 @@ button:hover {
     font-size: 1.3em;
 }
 
+footer {
+    min-height: 90px;
+}
+
 
 /* login and register forms */
 
-#form-login, #form-register {
-    /* margin-top: 130px; */
-    margin-top: 8%;
+#form-login {
+    margin-top: 15%;
+    box-shadow: 10px 10px 5px black;
+}
+
+#form-register {
+    margin-top: 5%;
     box-shadow: 10px 10px 5px black;
 }
 
 
 /* index.html */
-
-/* .index-background {
-    background-color: #2e2e2e;
-} */
 
 #effect {
     position: relative;
@@ -153,7 +161,7 @@ button:hover {
 @media only screen and (max-width: 768px) {
     #form-login, #form-register {
         margin-top: 10%;
-        margin-bottom: 10%;
+        /* margin-bottom: 10%; */
     }
     .font-1-5-em {
         font-size: 1em

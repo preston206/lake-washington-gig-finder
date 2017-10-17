@@ -83,7 +83,8 @@ app.use(function (req, res, next) {
 app.get('/', (req, res) => {
     res.render('index', {
         title: 'Lake Washington Gig Finder',
-        nav: false
+        nav: false,
+        footer: false
     });
 });
 
@@ -91,7 +92,8 @@ app.get('/', (req, res) => {
 app.get('/find', (req, res) => {
     res.render('find', {
         title: 'Gig Finder | Find',
-        nav: true
+        nav: true,
+        footer: false
     });
 });
 
@@ -99,7 +101,8 @@ app.get('/find', (req, res) => {
 app.get('/register', (req, res) => {
     res.render('register', {
         title: 'Gig Finder | Register',
-        nav: true
+        nav: true,
+        footer: true
     });
 });
 

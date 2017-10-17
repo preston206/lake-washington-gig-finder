@@ -31,7 +31,9 @@
     <div class="alert alert-success text-center font-weight-bold">{{success_msg}}</div>
     {{/if}} {{{ body }}}
 
-    {{footer}}
+    {{#if footer}}
+    {{> footer}}
+    {{/if}}
 </body>
 
 </html>

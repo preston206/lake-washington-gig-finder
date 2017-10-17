@@ -74,7 +74,8 @@ const jwtAuth = passport.authenticate('jwt', { session: true });
 router.get('/login', (req, res) => {
   res.render('login', {
     title: 'Gig Finder | Login',
-    nav: true
+    nav: true,
+    footer: true
   });
 });
 
@@ -82,7 +83,8 @@ router.get('/login', (req, res) => {
 router.get('/post', authCheck, roleCheck, (req, res) => {
   res.render('post', {
     title: 'Gig Finder | Post',
-    nav: true
+    nav: true,
+    footer: false
   });
 });
 
@@ -90,7 +92,8 @@ router.get('/post', authCheck, roleCheck, (req, res) => {
 router.get('/edit', authCheck, roleCheck, (req, res) => {
   res.render('edit', {
     title: 'Gig Finder | Edit',
-    nav: true
+    nav: true,
+    footer: false
   });
 });
 
