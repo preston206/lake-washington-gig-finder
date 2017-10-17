@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const { BasicStrategy } = require('passport-http');
+// const { BasicStrategy } = require('passport-http');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -24,7 +24,8 @@ const { router: authRouter, basicStrategy, jwtStrategy } = require('../auth');
 const { User } = require('../users/models');
 
 // 9/25/17 added failWithError to fix dialog box popup when passport sends back 401
-const basicAuth = passport.authenticate('basic', { session: true, failWithError: true });
+// const basicAuth = passport.authenticate('basic', { successRedirect: "/find", failureRedirect: "/auth/login", session: true, failureFlash: true, failWithError: true });
+const basicAuth = passport.authenticate('basic', { failWithError: true });
 // const basicAuth = passport.authenticate('basic', { session: true });
 const jwtAuth = passport.authenticate('jwt', { session: true });
 
@@ -195,13 +196,10 @@ passport.deserializeUser(function (id, done) {
 // );
 
 router.post('/login', basicAuth, (req, res) => {
-
   let authToken = createAuthToken(req.user.apiRepr());
   let id = req.user._id;
-
-  res.json({ authToken, id, userObj: res.locals.user });
-}
-);
+  res.json({ authToken, id });
+});
 
 // logout
 router.get('/logout', (req, res) => {

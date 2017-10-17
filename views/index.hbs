@@ -16,12 +16,10 @@
     </div>
 
     <div class="container pt-4">
-        <div id="thinkfulDropdown" class="mb-0 text-light text-center col-lg-6 mx-auto" title="instructions for Thinkful staff">
-            <div class="border border-secondary border-top-0 border-left-0 border-right-0">
-                <span class="font-1-5-em p-2">
-                    Thinkful?
-                </span>
-            </div>
+        <div id="thinkfulDropdown" class="col-lg-6 mx-auto" title="instructions for Thinkful staff">
+            <button type="button" id="thinkfulButton" class="btn btn-outline-secondary btn-block">
+                Thinkful?
+            </button>
         </div>
 
         <div class="toggler font-black col-lg-6 mx-auto">
@@ -71,7 +69,7 @@
             $("#effect").toggle("blind", 1000);
         };
 
-        $("#thinkfulDropdown").on("click", function () {
+        $("#thinkfulButton").on("click", function () {
             runEffect();
         });
 

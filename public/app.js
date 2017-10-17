@@ -60,7 +60,7 @@ function getAllJobs(callbackFn) {
     });
 };
 
-// INDEX PAGE
+// LOGIN PAGE
 // login handler
 function login(callbackFn) {
     const formData = $(event.target);
@@ -68,10 +68,8 @@ function login(callbackFn) {
     const password = formData.find('[name=password]').val().trim();
     const base64encoded = window.btoa(username + ':' + password);
 
-    // let sessionStorage;
     let sessionStorage;
     try {
-        // sessionStorage = window.sessionStorage;
         sessionStorage = window.sessionStorage
     } catch (error) {
         state.noSessionStorage = true;
@@ -84,8 +82,8 @@ function login(callbackFn) {
             xhr.setRequestHeader('Authorization', 'basic ' + base64encoded);
         },
         error: function (error) {
-            alert("A login error occurred.");
-            // console.log(error);
+            alert("Invalid credentials. Try again.");
+            console.log("error message: ", error);
         },
         success: callbackFn
     });
@@ -113,6 +111,7 @@ function logUserInfo(data) {
     state.userId = data.id;
 
     window.location.href = "/find";
+
 };
 
 // FIND PAGE

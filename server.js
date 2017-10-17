@@ -10,6 +10,9 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const { PORT, DATABASE_URL } = require('./config');
 
+// App init
+const app = express();
+
 // routes
 const { router: usersRouter } = require('./users');
 const { router: authRouter, basicStrategy, jwtStrategy } = require('./auth');
@@ -18,7 +21,7 @@ const { router: jobsRouter } = require('./jobs');
 mongoose.Promise = global.Promise;
 
 // App init
-const app = express();
+// const app = express();
 
 // view engine
 app.set('views', path.join(__dirname, '/views'));
@@ -100,12 +103,6 @@ app.get('/register', (req, res) => {
     });
 });
 
-// 9/25/17 added removeHeader to fix dialog box popup when
-// passport sends back 401
-// app.use(function (err, req, res, next) {
-//     res.removeHeader('www-authenticate');
-//     next(err);
-// });
 
 // A protected endpoint or testing JWT access
 // app.get('/protected',
@@ -121,6 +118,15 @@ app.get('/register', (req, res) => {
 app.use('/users/', usersRouter);
 app.use('/auth/', authRouter);
 app.use('/jobs/', jobsRouter);
+
+// 9/25/17 added removeHeader to fix dialog box popup when
+// passport sends back 401
+// also, this needs to be placed after the routes
+app.use(function (err, req, res, next) {
+    console.log("removing header...");
+    res.removeHeader('WWW-Authenticate');
+    next(err);
+});
 
 // server start and stop functions
 let server;
