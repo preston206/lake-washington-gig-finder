@@ -48,6 +48,9 @@ button:hover {
     color: #111;
 }
 
+.button-68 {
+    width: 68px;
+}
 
 /* header, navbar, and footer */
 
@@ -88,25 +91,30 @@ footer {
     position: relative;
 }
 
+#imgArrows {
+    width: 20px;
+}
+
 
 /* find.html */
 
 #map {
-    background-image: url("/img/lakeWA_crop.png");
     height: 800px;
-    border-radius: 8px;
+    line-height: 800px;
+}
+
+img#regionsMap {
+    height: 99%;
 }
 
 #all-job-listings {
     height: 800px;
     overflow: auto;
-    border-radius: 8px;
 }
 
 #job-description {
     height: 800px;
     overflow: auto;
-    border-radius: 8px;
 }
 
 .job-post {
@@ -133,7 +141,6 @@ footer {
 /* edit.html */
 
 #btn-delete-job-post {
-    /* margin-left: 325px; */
     margin-left: 61%;
 }
 

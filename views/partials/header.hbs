@@ -8,27 +8,27 @@
         <div class="collapse navbar-collapse mt-2" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/find" title="browse the jobs that have been posted">Find</a>
+                    <a class="nav-link text-primary" href="/find" title="browse the jobs that have been posted">Find</a>
                 </li>
                 {{#if user}}
                 <li class="nav-item">
-                    <a class="nav-link" href="/auth/post" title="post a new job">Post</a>
+                    <a class="nav-link text-primary" href="/auth/post" title="post a new job">Post</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/auth/edit" title="edit the jobs you have posted">Edit</a>
+                    <a class="nav-link text-primary" href="/auth/edit" title="edit the jobs you have posted">Edit</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/auth/logout" title="logout">Logout</a>
+                    <a class="nav-link text-primary" href="/auth/logout" title="logout">Logout</a>
                 </li>
                 {{else}}
                 <li class="nav-item">
-                    <a class="nav-link" href="/register" title="create an account">Register</a>
+                    <a class="nav-link text-primary" href="/register" title="create an account">Register</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/auth/login" title="login to your account">Login</a>
+                    <a class="nav-link text-primary" href="/auth/login" title="login to your account">Login</a>
                 </li>
                 {{/if}}
             </ul>
