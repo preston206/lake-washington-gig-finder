@@ -60,6 +60,7 @@ app.use(flash());
 app.use(function (req, res, next) {
     res.locals.user = req.user || null;
     res.locals.info_msg = req.flash('info_msg');
+    res.locals.error_msg = req.flash('error_msg');
     res.locals.success_msg = req.flash('success_msg');
     next();
 });

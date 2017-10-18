@@ -29,7 +29,13 @@
     
     {{#if success_msg}}
     <div class="alert alert-success text-center font-weight-bold">{{success_msg}}</div>
-    {{/if}} {{{ body }}}
+    {{/if}}
+    
+    {{#if error_msg}}
+    <div class="alert alert-danger text-center font-weight-bold">{{error_msg}}</div>
+    {{/if}}
+
+    {{{ body }}}
 
     {{#if footer}}
     {{> footer}}

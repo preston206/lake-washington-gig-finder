@@ -83,7 +83,7 @@ function login(callbackFn) {
         },
         error: function (error) {
             alert("Invalid credentials. Try again.");
-            console.log("error message: ", error);
+            // console.log("error message: ", error);
         },
         success: callbackFn
     });
@@ -111,7 +111,35 @@ function logUserInfo(data) {
     state.userId = data.id;
 
     window.location.href = "/find";
+};
 
+// USER REGISTRATION PAGE
+// send data to user register POST endpoint
+// function userRegister(callbackFn) {
+//     let url = "/users/register/";
+
+//     let data = {
+//         username: $('#register-username').val(),
+//         password: $('#register-password').val(),
+//         role: $('#register-role').val(),
+//     };
+
+//     $.ajax({
+//         method: "POST",
+//         url: url,
+//         data: JSON.stringify(data),
+//         headers: { "Content-Type": "application/json" },
+//         error: function (error) {
+//             window.location.reload(true);
+//         },
+//         success: callbackFn
+//     });
+// };
+
+// user reg redirect to login
+function regToLoginRedirect() {
+    console.info("user registered.");
+    window.location.href = "/login";
 };
 
 // FIND PAGE
@@ -296,7 +324,6 @@ function postJob() {
         data: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
         success: function () {
-            // console.info("job has been posted.");
             window.location.reload(true);
         }
     });
@@ -470,6 +497,12 @@ function deleteOneJob() {
 /////////////////////////
 // DOC READY FUNCTIONS
 $(function () {
+    // register.html - user registration handler
+    // $('#form-register').submit(function (event) {
+    //     event.preventDefault();
+    //     userRegister(regToLoginRedirect);
+    // });
+
     // login.html - login form handler
     $('#form-login').submit(function (event) {
         event.preventDefault();
