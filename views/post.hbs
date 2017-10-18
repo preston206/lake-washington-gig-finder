@@ -1,14 +1,15 @@
 <main>
+
+    <div class="container mt-2 mb-3">
+        <p class="text-light text-center font-2-2-em">Create a job post</p>
+    </div>
+
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-1">
             <div class="col-lg-6">
 
-                <div class="col-lg-12 mb-3 margin-top-4">
-                    <p class="text-light text-center font-2-2-em">Create a job post</p>
-                </div>
-
                 <!-- job posting form -->
-                <form id="form-job-post" class="border pt-3 pb-3 px-5 mb-4" method="POST" action="/jobs/post">
+                <form id="form-job-post" class="border py-3 px-5 mb-4" method="POST" action="/jobs/post">
                     <div class="form-group">
                         <label for="post-company" class="text-light">Company</label>
                         <input type="text" class="form-control" id="post-company" name="company" autofocus required/>
@@ -77,7 +78,6 @@
 
             </div>
         </div>
-
     </div>
 </main>
 
