@@ -289,6 +289,7 @@ function displayAllJobs(data) {
     // <br />
 
     $('#all-job-listings').html(results);
+    $('#job-description').html("<p class='text-center text-primary font-weight-bold pt-5'>Click on a job post.</p>");
 };
 
 // POST PAGE

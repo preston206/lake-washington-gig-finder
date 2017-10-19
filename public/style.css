@@ -48,9 +48,10 @@ button:hover {
     color: #111;
 }
 
-.button-68 {
-    width: 68px;
-}
+/* .button-10-percent {
+    width: 10%;
+} */
+
 
 /* header, navbar, and footer */
 
@@ -137,6 +138,10 @@ img#regionsMap {
     resize: none;
 }
 
+.job-find-mobile-note {
+    display: none;
+}
+
 
 /* edit.html */
 
@@ -176,4 +181,23 @@ img#regionsMap {
     .font-2-2-em {
         font-size: 1.7em
     }
+    #all-job-listings {
+        margin: 0!important;
+        order: 1;
+    }
+    #job-description {
+        order: 2;
+    }
+    #map {
+        order: 3;
+    }
+    .job-find-mobile-note {
+        display: initial;
+    }
+    /* #all-job-listings, #job-description, #map {
+        border-width: 3px;
+    } */
+    /* .button-10-percent {
+        width: 24%;
+    } */
 }

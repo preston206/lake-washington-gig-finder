@@ -1,6 +1,7 @@
 <main>
-    <div class="container text-center mt-2 mb-4">
+    <div class="container text-center mt-2 mb-3">
         <p class="text-light text-center font-2-2-em">Click on a job post to view the details</p>
+        <p class="job-find-mobile-note text-light text-center">- scroll down to filter by region -</p>
     </div>
 
     <div class="container-fluid">
@@ -9,14 +10,14 @@
             <!-- col-1 for spacing -->
             <div class="col-1 spacing-col"></div>
 
-            <div id="map" class="col-lg bg-light rounded text-center">
+            <div id="map" class="col-lg bg-light text-center rounded border border-dark">
                 <img src="/img/regionsMap.png" id="regionsMap" class="img-fluid rounded align-middle" alt="Lake Washington regions map">
             </div>
 
-            <div id="all-job-listings" class="col-lg ml-5 mr-5 bg-light rounded">
+            <div id="all-job-listings" class="col-lg ml-5 mr-5 bg-light rounded border border-dark">
             </div>
 
-            <div id="job-description" class="col-lg bg-light rounded">
+            <div id="job-description" class="col-lg bg-light rounded border border-dark">
             </div>
 
             <!-- col-1 for spacing -->
@@ -30,12 +31,13 @@
             Filter by region:
         </span>
 
-        <button class="btn btn-success btn-lg mr-3 button-68" id="btn-filter-nw" value="NW">NW</button>
-        <button class="btn btn-success btn-lg mr-3 button-68" id="btn-filter-ne" value="NE">NE</button>
-        <button class="btn btn-success btn-lg mr-3 button-68" id="btn-filter-se" value="SE">SE</button>
-        <button class="btn btn-success btn-lg mr-3 button-68" id="btn-filter-sw" value="SW">SW</button>
-
-        <span class="text-light mr-3"> | </span>
+        <div class="btn-group btn-group-lg mb-1" role="group">
+            <button class="btn btn-success mr-1" id="btn-filter-nw" value="NW">NW</button>
+            <button class="btn btn-success mr-1" id="btn-filter-ne" value="NE">NE</button>
+            <button class="btn btn-success mr-1" id="btn-filter-se" value="SE">SE</button>
+            <button class="btn btn-success mr-1" id="btn-filter-sw" value="SW">SW</button>
+        </div>
+        {{!-- <span class="text-light mr-3"> | </span> --}}
 
         {{!-- the saved jobs filter button is for a future feature. It would display the jobs that the user has saved. The button
         should start out disabled and then get enabled if the user's "savedJobs" array has content. --}} {{!--
@@ -45,9 +47,12 @@
         --}} {{!--
         <span class="text-light mr-3"> | </span> --}}
 
-        <button type="button" class="btn btn-primary btn-lg" id="btn-refresh-jobs">
-            Refresh
-        </button>
+        <div class="btn-group btn-group-lg mb-1" role="group">
+            <button type="button" class="btn btn-primary" id="btn-refresh-jobs">
+                Refresh
+            </button>
+        </div>
+
     </div>
 </main>
 
