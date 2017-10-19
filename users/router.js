@@ -50,6 +50,13 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
   );
 
   if (nonTrimmedField) {
+
+    let errorReason = 'Validation Error';
+    let errorMessage = 'Username and password cannot start or end with whitespace';
+
+    req.flash('error_msg', `${errorReason}: ${errorMessage}`);
+    res.redirect('../register');
+
     return res.status(422).json({
       code: 422,
       reason: 'ValidationError',
@@ -78,6 +85,15 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
   );
 
   if (tooSmallField || tooLargeField) {
+
+    let errorReason = 'Validation Error';
+    let errorMessage = tooSmallField ?
+      `Password must be at least ${sizedFields[tooSmallField].min} characters long` :
+      `Password cannot be greater than ${sizedFields[tooLargeField].max} characters long`;
+
+    req.flash('error_msg', `${errorReason}: ${errorMessage}`);
+    res.redirect('../register');
+
     return res.status(422).json({
       code: 422,
       reason: 'ValidationError',
