@@ -391,7 +391,7 @@ function displayJobsToEdit(data) {
                 };
             };
 
-            let jobPostHtml = $(`<div class="job-post-wrap">
+            let jobPostHtml = $(`<div class="job-post-wrap mt-1">
             <p class="job-post p-1">
             <span class="font-weight-bold">Posted</span> <span>${month} ${day}</span><br />
             <span class="font-weight-bold">for</span> <span>${job.title}</span><br />

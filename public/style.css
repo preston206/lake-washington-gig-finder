@@ -48,6 +48,7 @@ button:hover {
     color: #111;
 }
 
+
 /* .button-10-percent {
     width: 10%;
 } */
@@ -173,7 +174,7 @@ img#regionsMap {
 @media only screen and (max-width: 768px) {
     #form-login, #form-register {
         margin-top: 10%;
-        /* margin-bottom: 10%; */
+        /* margin-bottom: 2%; */
     }
     .font-1-5-em {
         font-size: 1em
@@ -194,6 +195,16 @@ img#regionsMap {
     .job-find-mobile-note {
         display: initial;
     }
+    footer {
+        display: none;
+    }
+    #formDiv {
+        padding-left: 0!important;
+        padding-right: 0!important;
+    }
+    /* #thinkfulDropdownDiv {
+        padding-top: 5px;
+    } */
     /* #all-job-listings, #job-description, #map {
         border-width: 3px;
     } */

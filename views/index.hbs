@@ -15,8 +15,8 @@
         </div>
     </div>
 
-    <div class="container pt-4">
-        <div id="thinkfulDropdown" class="col-lg-6 mx-auto mb-4" title="instructions for Thinkful staff">
+    <div class="container pb-4">
+        <div class="col-lg-6 mx-auto" title="instructions for Thinkful staff">
             <button type="button" id="thinkfulButton" class="btn btn-outline-secondary btn-block">
                 Thinkful?
                 <img src="/img/arrows-gray-40x40.png" id="imgArrows" class="float-right" alt="up down" />
@@ -24,10 +24,11 @@
         </div>
 
         <div class="toggler font-black col-lg-6 mx-auto">
-            <div id="effect" class="px-3 py-2">
+            <div id="effect" class="py-2 px-3">
 
                 <p>
-                    Gig Finder is a localized job site for developers in the Seattle metro area.
+                    Gig Finder is a localized job site for developers in the Seattle
+                    <br />metro area.
                 </p>
 
                 <ul>
@@ -67,7 +68,7 @@
         $('#effect').addClass('text-light');
 
         function runEffect() {
-            $("#effect").toggle("blind", 1000);
+            $("#effect").toggle("fade", 1000);
         };
 
         $("#thinkfulButton").on("click", function () {
