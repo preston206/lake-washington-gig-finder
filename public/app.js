@@ -62,10 +62,13 @@ function getAllJobs(callbackFn) {
 
 // LOGIN PAGE
 // login handler
-function login(callbackFn) {
+function login(event, callbackFn) {
     const formData = $(event.target);
     const username = formData.find('[name=username]').val().trim();
     const password = formData.find('[name=password]').val().trim();
+
+    // const username = $('#login-username');
+    // const password = $('#login-password');
     const base64encoded = window.btoa(username + ':' + password);
 
     let sessionStorage;
@@ -507,7 +510,7 @@ $(function () {
     // login.html - login form handler
     $('#form-login').submit(function (event) {
         event.preventDefault();
-        login(logUserInfo);
+        login(event, logUserInfo);
     });
 
     // find.html - get all jobs / refresh job list
