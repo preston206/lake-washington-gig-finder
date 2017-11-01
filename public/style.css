@@ -24,6 +24,10 @@ body {
     font-size: 2.2em
 }
 
+.font-8-em {
+    font-size: 8em;
+}
+
 .margin-top-2 {
     margin-top: 2%;
 }
@@ -88,6 +92,10 @@ footer {
 
 
 /* index.html */
+
+.index-h1 {
+    font-family: 'Londrina Outline', cursive;
+}
 
 #effect {
     position: relative;
@@ -211,4 +219,11 @@ img#regionsMap {
     /* .button-10-percent {
         width: 24%;
     } */
+}
+
+@media (min-width: 576px) {
+    /* bootstrap jumbotron padding override */
+    .jumbotron {
+        padding: 3.5rem 2rem 2rem 2rem;
+    }
 }
