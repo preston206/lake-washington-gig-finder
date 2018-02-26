@@ -1,18 +1,9 @@
-// require('dotenv').config();
 const express = require('express');
-// const router = express();
-// const path = require('path');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const passport = require('passport');
-// const mongoose = require('mongoose');
 const router = express.Router();
-
-// const { router: usersRouter } = require('../users');
-// const { router: authRouter, basicStrategy, jwtStrategy } = require('../auth');
-// mongoose.Promise = global.Promise;
-// const { PORT, DATABASE_URL } = require('../config');
 
 const { Job } = require('./models');
 const { User } = require('../users/models');
@@ -69,58 +60,6 @@ router.post('/post', jsonParser, urlencodedParser, (req, res, next) => {
             });
         });
 });
-
-
-// copy of job post code
-// return Job
-// .create({
-//     company,
-//     title,
-//     salary,
-//     region,
-//     city,
-//     email,
-//     technologies,
-//     description
-// })
-// .then(job => {
-//     res.status(201);
-//     res.render('test');
-// })
-// .catch(error => {
-//     return res.status(500).json({
-//         message: "Internal Server Error."
-//     });
-// });
-
-
-// copy of job post code
-// return Job
-// .create({
-//     company,
-//     title,
-//     salary,
-//     region,
-//     city,
-//     email,
-//     technologies,
-//     description,
-//     postedBy
-// })
-// .then(job => {
-//     return res.status(201).json({
-//         message: "Job has been posted.",
-//         data: job.apiRepr()
-//     });
-// })
-// .catch(error => {
-//     return res.status(500).json({
-//         message: "Internal Server Error."
-//     });
-// });
-
-
-
 
 // (Read) get ALL jobs
 router.get('/', (req, res) => {

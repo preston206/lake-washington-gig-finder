@@ -134,10 +134,6 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
       // return res.status(201).json(user.apiRepr());
       req.flash('success_msg', 'You have successfully registered. You can login now.');
       res.redirect('../auth/login');
-      // res.render('login', {
-      //   title: 'Gig Finder | Login',
-      //   nav: true
-      // });
     })
     .catch(err => {
       // Forward validation errors on to the client, otherwise give a 500
@@ -145,54 +141,9 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
       if (err.reason === 'ValidationError') {
         req.flash('error_msg', 'Username already taken. Try again.');
         res.redirect('../register');
-        // return res.status(err.code).json(err);
       }
       res.status(500).json({ code: 500, message: err.stack });
     });
 });
 
 module.exports = { router };
-
-
-
-// return User
-// .find({ username })
-// .count()
-// .then(count => {
-//   if (count > 0) {
-//     // check for existing user with the same username
-//     return Promise.reject({
-//       code: 422,
-//       reason: 'ValidationError',
-//       message: 'Username already taken',
-//       location: 'username'
-//     });
-//   }
-//   // if username doesnt exist, hash the password
-//   return User.hashPassword(password)
-// })
-// .then(hash => {
-//   return User
-//     .create({
-//       username,
-//       password: hash,
-//       role
-//     })
-// })
-// .then(user => {
-//   // return res.status(201).json(user.apiRepr());
-//   req.flash('success_msg', 'You have successfully registered. You can login now.');
-//   res.redirect('../auth/login');
-//   // res.render('login', {
-//   //   title: 'Gig Finder | Login',
-//   //   nav: true
-//   // });
-// })
-// .catch(err => {
-//   // Forward validation errors on to the client, otherwise give a 500
-//   // error because something unexpected has happened
-//   if (err.reason === 'ValidationError') {
-//     return res.status(err.code).json(err);
-//   }
-//   res.status(500).json({ code: 500, message: err.stack });
-// });

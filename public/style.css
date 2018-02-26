@@ -8,6 +8,9 @@ body {
     font-size: 13px;
 }
 
+
+/* utility classes */
+
 .font-0-8-em {
     font-size: 0.8em
 }
@@ -51,11 +54,6 @@ button:hover {
 .font-black {
     color: #111;
 }
-
-
-/* .button-10-percent {
-    width: 10%;
-} */
 
 
 /* header, navbar, and footer */
@@ -180,9 +178,9 @@ img#regionsMap {
 /* media queries */
 
 @media only screen and (max-width: 768px) {
-    #form-login, #form-register {
+    #form-login,
+    #form-register {
         margin-top: 10%;
-        /* margin-bottom: 2%; */
     }
     .font-1-5-em {
         font-size: 1em
@@ -210,15 +208,6 @@ img#regionsMap {
         padding-left: 0!important;
         padding-right: 0!important;
     }
-    /* #thinkfulDropdownDiv {
-        padding-top: 5px;
-    } */
-    /* #all-job-listings, #job-description, #map {
-        border-width: 3px;
-    } */
-    /* .button-10-percent {
-        width: 24%;
-    } */
 }
 
 @media (min-width: 576px) {

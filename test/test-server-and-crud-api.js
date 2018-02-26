@@ -2,22 +2,15 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const faker = require('faker');
 const mongoose = require('mongoose');
-
 const should = chai.should();
-
-// const { app } = require('../server');
-// const { router: jobsRouter } = require('../jobs');
-// app.use('/jobs/', jobsRouter);
 
 //import db urls, port, run\close server, models
 const { PORT, TEST_DATABASE_URL } = require('../config');
 const { runServer, closeServer, app } = require('../server');
 const { Job } = require('../jobs/models');
 const { User } = require('../users/models');
-// const { TEST_DATABASE_URL } = require('../config');
 
 chai.use(chaiHttp);
-
 
 // drop db
 function dropDB() {
@@ -102,32 +95,6 @@ describe('Server', function () {
                 response.should.be.html;
             });
     });
-
-    // it('should test for 200 when getting job search data', function () {
-
-    //     return chai.request(app)
-    //         .get('/jobs/')
-    //         .then(function (response) {
-    //             response.body.should.be.a('array');
-    //         })
-    // });
-
-    // it('should fail when hitting the auth protected post route', function () {
-    //     return chai.request(app)
-    //         .get('/auth/post')
-    //         .then(function (response) {
-    //             response.should.fail();
-    //         });
-    // });
-
-    // it('should fail when hitting the auth protected edit route', function () {
-    //     return chai.request(app)
-    //         .get('/auth/edit')
-    //         .then(function (response) {
-    //             response.should.fail();
-    //         });
-    // });
-
 });
 
 
@@ -267,9 +234,6 @@ describe('Jobs API', function () {
             })
             .then(function (res) {
                 res.should.have.status(204);
-                // res.should.be.json;
-                // res.body.should.be.a('object');
-                // res.body.should.deep.equal(updateJob);
             });
     });
 

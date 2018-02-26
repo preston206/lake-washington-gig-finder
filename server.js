@@ -10,6 +10,13 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const { PORT, DATABASE_URL } = require('./config');
 
+// // //
+// TODO: convert passport strategy from basic to local
+// the local strategy is much much easier to work with and debug
+// it's ok to keep the JWT strategy in place, but it might need some refactoring to
+// work side-by-side with a new strategy in place
+// // //
+
 // App init
 const app = express();
 
@@ -19,9 +26,6 @@ const { router: authRouter, basicStrategy, jwtStrategy } = require('./auth');
 const { router: jobsRouter } = require('./jobs');
 
 mongoose.Promise = global.Promise;
-
-// App init
-// const app = express();
 
 // view engine
 app.set('views', path.join(__dirname, '/views'));
@@ -108,7 +112,7 @@ app.get('/register', (req, res) => {
 });
 
 
-// A protected endpoint or testing JWT access
+// A protected endpoint for testing JWT access
 // app.get('/protected',
 //     passport.authenticate('jwt', { session: false }),
 //     (req, res) => {
@@ -132,7 +136,8 @@ app.use(function (err, req, res, next) {
     next(err);
 });
 
-// server start and stop functions
+// ---- server config section -----
+// start and stop functions
 let server;
 
 // create a paramater to pass a database URL to
@@ -183,7 +188,7 @@ function closeServer() {
     });
 }
 
-// pass it the databast variable from config- the prod db
+// pass it the database variable from config- note: this is where we can toggle between test and prod DB
 if (require.main === module) {
     runServer(DATABASE_URL).catch(err => console.error(err));
 };

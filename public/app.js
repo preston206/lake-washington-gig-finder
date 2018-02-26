@@ -9,10 +9,7 @@ let state = {
 // ----- NOTE: if deploying to Heroku, dont use http://localhost:8080 -----
 // Heroku uses its own ports internally and hard coding the port in the
 // AJAX calls can cause Heroku to fail because it tries to connect to 8080
-// but internally Heroku has configured the app to use a different port
-// Also, dont use http either; just use the endpoint on its own and thats it
-// E.G. /jobs/getmyjobs/
-
+// but internally Heroku has dynamically configured the app to use a different port
 
 
 
@@ -67,8 +64,6 @@ function login(event, callbackFn) {
     const username = formData.find('[name=username]').val().trim();
     const password = formData.find('[name=password]').val().trim();
 
-    // const username = $('#login-username');
-    // const password = $('#login-password');
     const base64encoded = window.btoa(username + ':' + password);
 
     let sessionStorage;
@@ -86,7 +81,6 @@ function login(event, callbackFn) {
         },
         error: function (error) {
             alert("Invalid credentials. Try again.");
-            // console.log("error message: ", error);
         },
         success: callbackFn
     });
@@ -94,11 +88,6 @@ function login(event, callbackFn) {
 
 // save user id and auth token to session storage and app state
 function logUserInfo(data) {
-
-    // res.locals.user = req.user;
-
-    // console.log(data);
-    // alert(data);
 
     if (state.noSessionStorage) {
         console.info("Unable to access local session storage.");
@@ -116,36 +105,13 @@ function logUserInfo(data) {
     window.location.href = "/find";
 };
 
-// USER REGISTRATION PAGE
-// send data to user register POST endpoint
-// function userRegister(callbackFn) {
-//     let url = "/users/register/";
-
-//     let data = {
-//         username: $('#register-username').val(),
-//         password: $('#register-password').val(),
-//         role: $('#register-role').val(),
-//     };
-
-//     $.ajax({
-//         method: "POST",
-//         url: url,
-//         data: JSON.stringify(data),
-//         headers: { "Content-Type": "application/json" },
-//         error: function (error) {
-//             window.location.reload(true);
-//         },
-//         success: callbackFn
-//     });
-// };
-
 // user reg redirect to login
 function regToLoginRedirect() {
     console.info("user registered.");
     window.location.href = "/login";
 };
 
-// FIND PAGE
+// JOB FIND PAGE
 // display ALL job posts on find.html
 function displayAllJobs(data) {
 
@@ -295,7 +261,7 @@ function displayAllJobs(data) {
     $('#job-description').html("<p class='text-center text-primary font-weight-bold pt-5'>Click on a job post.</p>");
 };
 
-// POST PAGE
+// JOB POST PAGE
 // send job data to jobs POST endpoint
 function postJob() {
     let url = "/jobs/post/";
@@ -333,7 +299,7 @@ function postJob() {
     });
 };
 
-// EDIT PAGE
+// JOB EDIT PAGE
 // display jobs by user ID
 function displayJobsToEdit(data) {
 
@@ -343,8 +309,6 @@ function displayJobsToEdit(data) {
         $('#edit-job-list').html("<p class='text-center text-primary font-weight-bold pt-5'>You haven't posted any jobs yet.</p>");
     }
     else {
-
-        // TODO: move date process into new function (dont reuse code!)
 
         data.map(function (job) {
 
@@ -465,7 +429,7 @@ function updateJob() {
         data: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
         success: function () {
-            // console.info("job has been updated.");
+
             window.location.reload(true);
         }
     });

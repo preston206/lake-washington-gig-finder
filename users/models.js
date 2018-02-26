@@ -23,12 +23,7 @@ const UserSchema = mongoose.Schema({
   }
 });
 
-// Future TODO: add a "save job" feature
-// it would require a PUT API to push the job ID (this.job.id) to the
-// savedJobs array. Then a GET, which would find the user and then return
-// the array of saved jobs, and then the job IDs might need to be sent to
-// another GET endpoint which would iterate over the array and
-// return the data to display on the page.
+// Future TODO: add a feature for users to save jobs that they are interested in
 
 
 UserSchema.methods.apiRepr = function () {

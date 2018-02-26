@@ -1,9 +1,8 @@
 const passport = require('passport');
 const { BasicStrategy } = require('passport-http');
-// const jwt = require('jsonwebtoken');
+
 const {
-  // Assigns the Strategy export to the name JwtStrategy using object
-  // destructuring
+  // Assigns the Strategy export to the name JwtStrategy using object destructuring
   // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Assigning_to_new_variable_names
   Strategy: JwtStrategy,
   ExtractJwt
@@ -13,7 +12,7 @@ const { User } = require('../users/models');
 const { JWT_SECRET } = require('../config');
 
 const basicStrategy = new BasicStrategy((username, password, callback) => {
-  console.log("hello from your basic strategy");
+
   let user;
   User
     .findOne({ username: username })
@@ -45,16 +44,6 @@ const basicStrategy = new BasicStrategy((username, password, callback) => {
       return callback(err, false);
     });
 });
-
-// passport.serializeUser(function (user, done) {
-//   done(null, user);
-// });
-
-// passport.deserializeUser(function (id, done) {
-//   User.findById(id, function (err, user) {
-//     done(err, user);
-//   });
-// });
 
 const jwtStrategy = new JwtStrategy({
   secretOrKey: JWT_SECRET,
