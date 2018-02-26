@@ -6,7 +6,7 @@ deploy:
   provider: heroku
   api_key:
     secure: 4e0235eb-28b7-4735-96a5-dd0874fa452f
-  app: infinite-garden-26914
+  app: lakewashingtongigfinder
   on:
     repo: preston206/lake-washington-gig-finder
 notifications:
