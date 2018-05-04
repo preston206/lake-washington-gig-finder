@@ -40,7 +40,11 @@ body {
 }
 
 .margin-bottom-2 {
-    margin-bottom: 10%
+    margin-bottom: 10%;
+}
+
+.margin-bottom-1 {
+    margin-bottom: 5%;
 }
 
 button:hover {
@@ -78,15 +82,15 @@ footer {
 
 /* login and register forms */
 
-#form-login {
+/* #form-login {
     margin-top: 8%;
     box-shadow: 10px 10px 5px black;
-}
+} */
 
-#form-register {
+/* #form-register {
     margin-top: 5%;
     box-shadow: 10px 10px 5px black;
-}
+} */
 
 
 /* index.html */

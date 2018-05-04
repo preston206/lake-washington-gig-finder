@@ -4,8 +4,37 @@
         <p class="job-find-mobile-note text-light text-center">- scroll down to filter by region -</p>
     </div>
 
+    <div class="container text-center mt-2 mb-3">
+        <span class="font-weight-bold text-light align-middle lead mr-3">
+            Filter by region:
+        </span>
+
+        <div class="btn-group btn-group-lg mb-1" role="group">
+            <button class="btn btn-success mr-1" id="btn-filter-nw" value="NW">NW</button>
+            <button class="btn btn-success mr-1" id="btn-filter-ne" value="NE">NE</button>
+            <button class="btn btn-success mr-1" id="btn-filter-se" value="SE">SE</button>
+            <button class="btn btn-success mr-1" id="btn-filter-sw" value="SW">SW</button>
+        </div>
+        {{!--
+        <span class="text-light mr-3"> | </span> --}} {{!-- the saved jobs filter button is for a future feature. It would display the jobs that the user
+        has saved. The button should start out disabled and then get enabled if the user's "savedJobs" array has content.
+        --}} {{!--
+        <button class="btn btn-warning mr-3" id="btn-filter-saved" title="Show your saved jobs.">
+            Saved
+        </button>
+        --}} {{!--
+        <span class="text-light mr-3"> | </span> --}}
+
+        <div class="btn-group btn-group-lg mb-1" role="group">
+            <button type="button" class="btn btn-primary" id="btn-refresh-jobs">
+                Refresh
+            </button>
+        </div>
+
+    </div>
+
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center margin-bottom-1">
 
             <!-- col-1 for spacing -->
             <div class="col-1 spacing-col"></div>
@@ -26,34 +55,6 @@
         </div>
     </div>
 
-    <div class="container text-center mt-2 mb-3">
-        <span class="font-weight-bold text-light align-middle lead mr-3">
-            Filter by region:
-        </span>
-
-        <div class="btn-group btn-group-lg mb-1" role="group">
-            <button class="btn btn-success mr-1" id="btn-filter-nw" value="NW">NW</button>
-            <button class="btn btn-success mr-1" id="btn-filter-ne" value="NE">NE</button>
-            <button class="btn btn-success mr-1" id="btn-filter-se" value="SE">SE</button>
-            <button class="btn btn-success mr-1" id="btn-filter-sw" value="SW">SW</button>
-        </div>
-        {{!-- <span class="text-light mr-3"> | </span> --}}
-
-        {{!-- the saved jobs filter button is for a future feature. It would display the jobs that the user has saved. The button
-        should start out disabled and then get enabled if the user's "savedJobs" array has content. --}} {{!--
-        <button class="btn btn-warning mr-3" id="btn-filter-saved" title="Show your saved jobs.">
-            Saved
-        </button>
-        --}} {{!--
-        <span class="text-light mr-3"> | </span> --}}
-
-        <div class="btn-group btn-group-lg mb-1" role="group">
-            <button type="button" class="btn btn-primary" id="btn-refresh-jobs">
-                Refresh
-            </button>
-        </div>
-
-    </div>
 </main>
 
 <!-- scripts -->

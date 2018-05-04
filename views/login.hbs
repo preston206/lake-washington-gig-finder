@@ -1,10 +1,38 @@
 <main>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-lg-6">
+
+            <div class="col-lg-2 mt-5 pt-3 border border-secondary text-light" title="instructions for Thinkful staff">
+                <p>Test Account Login Instructions</p>
+
+                <p>You can go to the registration page and create your own account, or you can login with one of the demo accounts.</p>
+
+                <p>
+                    Demo Accounts:
+                    <br>
+
+                    <u>Job Seeker</u>
+                    <br> u: batman@domain.com
+                    <br> p: stella123
+                    <br>
+
+                    <br>
+                    <u>Company</u>
+                    <br> u: spiderman@domain.com
+                    <br> p: stella123
+                </p>
+
+                <ul>
+                    <li>A "Job Seeker" can only browse jobs.</li>
+                    <li>A "Company" can browse, post, edit, and delete job posts.</li>
+                </ul>
+
+            </div>
+
+            <div class="col-lg-4">
 
                 <!-- login form -->
-                <form id="form-login" class="border pt-3 px-5 mb-2" method="#" action="#">
+                <form id="form-login" class="border border-secondary mt-5 pt-3 px-5" method="#" action="#">
                     <fieldset class="form-group">
 
                         <legend class="text-light display-4 mb-5">Login</legend>
@@ -35,9 +63,29 @@
                 </form>
 
             </div>
+
         </div>
     </div>
 </main>
 
+<script src="/app.js"></script> {{!--
+<script>
+    $(function () {
 
-<script src="/app.js"></script>
+        $("#effect").hide();
+
+        $('.toggler').removeClass('font-black');
+        $('#effect').addClass('border');
+        $('#effect').addClass('border-secondary');
+        $('#effect').addClass('text-light');
+
+        function runEffect() {
+            $("#effect").toggle("fade", 1000);
+        };
+
+        $("#thinkfulButton").on("click", function () {
+            runEffect();
+        });
+
+    });
+</script> --}}

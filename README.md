@@ -17,13 +17,13 @@ This is a tech-job posting site. I based it on the Seattle area. Additionally, I
 
 #### Login instructions can be found on [the landing page](https://lakewashingtongigfinder.herokuapp.com/).
 
-![Screenshot of Lake Washington Gig Finder Landing Page](http://bprdev.io/img/gigfinder/ss/landing-width1200.png "Lake Washington Gig Finder Landing Page")
+![Screenshot of Lake Washington Gig Finder Landing Page](http://bprdev.io/img/gigfinder/ss/landing2-width1200.png "Lake Washington Gig Finder Landing Page")
 
-![Screenshot of Lake Washington Gig Finder Register Page](http://bprdev.io/img/gigfinder/ss/register-width1200.png "Lake Washington Gig Finder Register Page")
+![Screenshot of Lake Washington Gig Finder Register Page](http://bprdev.io/img/gigfinder/ss/register2-width1200.png "Lake Washington Gig Finder Register Page")
 
-![Screenshot of Lake Washington Gig Finder Login Page](http://bprdev.io/img/gigfinder/ss/login-width1200.png "Lake Washington Gig Finder Login Page")
+![Screenshot of Lake Washington Gig Finder Login Page](http://bprdev.io/img/gigfinder/ss/login2-width1200.png "Lake Washington Gig Finder Login Page")
 
-![Screenshot of Lake Washington Gig Finder Job Search Page](http://bprdev.io/img/gigfinder/ss/findJob-width1200.png "Lake Washington Gig Finder Job Search Page")
+![Screenshot of Lake Washington Gig Finder Job Search Page](http://bprdev.io/img/gigfinder/ss/findJob2-width1200.png "Lake Washington Gig Finder Job Search Page")
 
 ![Screenshot of Lake Washington Gig Finder Job Post Page](http://bprdev.io/img/gigfinder/ss/postJob-width1200.png "Lake Washington Gig Finder Job Post Page")
 
