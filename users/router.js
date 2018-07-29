@@ -9,7 +9,7 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-// Post to register a new user
+// Post endpoint to register a new user
 router.post('/register', jsonParser, urlencodedParser, (req, res) => {
   const requiredFields = ['username', 'password', 'role'];
   const missingField = requiredFields.find(field => !(field in req.body));
@@ -37,7 +37,7 @@ router.post('/register', jsonParser, urlencodedParser, (req, res) => {
     });
   }
 
-  // If the username and password aren't trimmed we give an error.  Users might
+  // If the username and password aren't trimmed send an error. Users might
   // expect that these will work without trimming (i.e. they want the password
   // "foobar ", including the space at the end).  We need to reject such values
   // explicitly so the users know what's happening, rather than silently
